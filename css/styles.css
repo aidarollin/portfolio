@@ -1,0 +1,73 @@
+/* ==========================================================================
+   styles.css
+   Custom component styles for Aida Sofiah's portfolio.
+
+   Tailwind's CDN cannot detect class names that are assembled dynamically,
+   so any reusable component classes must be defined here rather than
+   composed purely from Tailwind utilities.
+
+   Sections
+   --------
+   1. Base / Reset helpers
+   2. Hero — animation init state
+   3. Pill components  (skill-pill, figma-tag)
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Base / Reset helpers
+   -------------------------------------------------------------------------- */
+
+/**
+ * Elements that should start invisible and be revealed by the JS
+ * IntersectionObserver in main.js.
+ * The animation classes on the hero (animate-fade-up-*) handle their own
+ * reveal via Tailwind keyframes; only the scroll-triggered .reveal-section
+ * elements need this rule.
+ */
+.opacity-0-init {
+  opacity: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Pill components
+   -------------------------------------------------------------------------- */
+
+/**
+ * .skill-pill
+ * Used in the Hero skills row and the Work Experience "Platforms" row.
+ * Light violet tint on a white/surface background.
+ */
+.skill-pill {
+  display:          inline-block;
+  padding:          0.25rem 0.75rem;
+  font-size:        0.75rem;    /* 12px */
+  font-weight:      500;
+  color:            #6D28D9;   /* primary */
+  background-color: #F5F3FF;   /* surface */
+  border:           1px solid #DDD6FE;
+  border-radius:    9999px;
+  transition:       background-color 0.15s ease, color 0.15s ease;
+}
+
+.skill-pill:hover {
+  background-color: #EDE9FE;
+  color:            #5B21B6;
+}
+
+/**
+ * .figma-tag
+ * Used inside the Design Portfolio dark section.
+ * Semi-transparent violet on the dark slate background.
+ */
+.figma-tag {
+  display:          inline-block;
+  padding:          0.2rem 0.65rem;
+  font-size:        0.7rem;    /* ~11px */
+  font-weight:      600;
+  color:            #a78bfa;   /* accent */
+  background-color: rgba(109, 40, 217, 0.12);
+  border:           1px solid rgba(109, 40, 217, 0.25);
+  border-radius:    9999px;
+}
