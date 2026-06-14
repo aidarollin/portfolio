@@ -5,36 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aida Sofiah</title>
   <meta name="description" content="Portfolio of Aida Sofiah Binti Ahmad Fikri — UI/UX Designer and Computer Science student graduating July 2026." />
-  
-  <!-- Tailwind config must load before the CDN -->
+  <!-- Tailwind config must load before the CDN so custom tokens are available -->
   <script>
     tailwind = {
       config: {
         theme: {
           extend: {
-            /* ── Brand colours from your image ── */
+
+            /* ── Brand colours ── */
             colors: {
-              primary:         '#712FE6', /* Vibrant purple from image */
-              'primary-light': '#8447F4',
-              surface:         '#F6F2FF', /* Very pale purple */
-              dark:            '#0F172A', /* Navy/Black */
-              graytxt:         '#64748B', /* Muted text */
+              primary:         '#6D28D9',
+              'primary-light': '#7C3AED',
+              accent:          '#A78BFA',
+              surface:         '#F5F3FF',
             },
+
+            /* ── Typography ── */
             fontFamily: {
               sans: ['Inter', 'system-ui', 'sans-serif'],
             },
+
+            /* ── Named animations ── */
             animation: {
               'fade-up':         'fadeUp 0.7s ease both',
               'fade-up-delay':   'fadeUp 0.7s ease 0.2s both',
               'fade-up-delay-2': 'fadeUp 0.7s ease 0.4s both',
               'fade-up-delay-3': 'fadeUp 0.7s ease 0.6s both',
+              blob:              'blob 8s infinite',
             },
+
+            /* ── Keyframe definitions ── */
             keyframes: {
               fadeUp: {
                 '0%':   { opacity: '0', transform: 'translateY(24px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
               },
+              blob: {
+                '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                '33%':      { transform: 'translate(20px, -20px) scale(1.05)' },
+                '66%':      { transform: 'translate(-15px, 15px) scale(0.95)' },
+              },
             },
+
           },
         },
       },
@@ -43,40 +55,86 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
 
+  <!-- Custom component styles -->
   <style>
-    /* Global styles */
+    /* ==========================================================================
+       Custom component styles for Aida Sofiah's portfolio.
+       ========================================================================== */
+
+    /* 1. Global scroll behaviour */
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 5rem;
+      scroll-padding-top: 5rem; /* 80px — offset for fixed nav */
     }
+
+    /* 2. Scroll-reveal init state */
     .reveal-section {
       opacity: 0;
     }
-    .skill-pill {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.75rem;
+
+    /* 3. Navigation — active link & mobile menu */
+    .nav-active {
+      color: #6D28D9;
+      font-weight: 600;
+    }
+
+    .mobile-nav-link {
+      display: block;
+      padding: 0.625rem 0.75rem;
+      font-size: 0.9375rem;
       font-weight: 500;
-      color: #712FE6;
-      background-color: #F6F2FF;
-      border: 1px solid #EADDFF;
-      border-radius: 9999px;
-      transition: all 0.2s ease;
+      color: #374151;
+      border-radius: 0.5rem;
+      transition: color 0.15s ease, background-color 0.15s ease;
+    }
+    .mobile-nav-link:hover {
+      color: #6D28D9;
+      background-color: #F5F3FF;
+    }
+
+    .mobile-contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.875rem;
+      color: #4B5563;
+      transition: color 0.15s ease;
+    }
+    .mobile-contact-link:hover {
+      color: #6D28D9;
+    }
+
+    /* 4. Pill components */
+    .skill-pill {
+      display:          inline-block;
+      padding:          0.25rem 0.75rem;
+      font-size:        0.75rem;
+      font-weight:      500;
+      color:            #6D28D9;
+      background-color: #F5F3FF;
+      border:           1px solid #DDD6FE;
+      border-radius:    9999px;
+      transition:       background-color 0.15s ease, color 0.15s ease;
     }
     .skill-pill:hover {
-      background-color: #EADDFF;
+      background-color: #EDE9FE;
+      color:            #5B21B6;
     }
+
     .figma-tag {
-      display: inline-block;
-      padding: 0.2rem 0.65rem;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #712FE6;
-      background-color: rgba(113, 47, 230, 0.1);
-      border: 1px solid rgba(113, 47, 230, 0.2);
-      border-radius: 9999px;
+      display:          inline-block;
+      padding:          0.2rem 0.65rem;
+      font-size:        0.7rem;
+      font-weight:      600;
+      color:            #a78bfa;
+      background-color: rgba(109, 40, 217, 0.12);
+      border:           1px solid rgba(109, 40, 217, 0.25);
+      border-radius:    9999px;
     }
   </style>
 </head>
@@ -84,269 +142,1139 @@
 
   <!-- ── Navigation ── -->
   <header class="fixed top-0 inset-x-0 z-50">
-    <nav class="bg-white/90 backdrop-blur-lg border-b border-gray-100 shadow-sm" aria-label="Main navigation">
+    <nav
+      class="bg-white/90 backdrop-blur-lg border-b border-violet-100/60 shadow-sm shadow-violet-50"
+      aria-label="Main navigation"
+    >
       <div class="max-w-6xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+
         <!-- Logo -->
-        <a href="#home" class="text-xl font-black tracking-tight text-dark shrink-0">
+        <a
+          href="#home"
+          class="text-xl font-black tracking-tight text-gray-900 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+          aria-label="Aida Sofiah — back to top"
+        >
           Aida<span class="text-primary">.</span>
         </a>
 
-        <!-- Nav links (desktop) -->
+        <!-- Nav links (desktop only) -->
         <div class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-600">
-          <a href="#experience" class="hover:text-primary transition-colors">Experience</a>
-          <a href="#work" class="hover:text-primary transition-colors">Projects</a>
-          <a href="#design" class="hover:text-primary transition-colors">Design</a>
-          <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+          <a href="#about"      class="hover:text-primary transition-colors duration-200">About</a>
+          <a href="#experience" class="hover:text-primary transition-colors duration-200">Experience</a>
+          <a href="#work"       class="hover:text-primary transition-colors duration-200">Projects</a>
+          <a href="#design"     class="hover:text-primary transition-colors duration-200">Design</a>
+          <a href="#contact"    class="hover:text-primary transition-colors duration-200">Contact</a>
         </div>
 
-        <!-- Contact info (desktop) -->
+        <!-- Desktop contact info -->
         <div class="hidden sm:flex items-center gap-4 text-sm text-gray-600 shrink-0">
-          <a href="mailto:aidaasofiah@gmail.com" class="hover:text-primary transition-colors">
+          <a
+            href="mailto:aidaasofiah@gmail.com"
+            class="hidden lg:flex items-center gap-1.5 hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            aria-label="Email Aida"
+          >
+            <svg class="w-4 h-4 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M2.003 5.884 10 9.882l7.997-3.998A2 2 0 0 0 16 4H4a2 2 0 0 0-1.997 1.884Z"/>
+              <path d="m18 8.118-8 4-8-4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.118Z"/>
+            </svg>
             aidaasofiah@gmail.com
           </a>
-          <span class="text-gray-200">|</span>
-          <span>011-2357 9237</span>
+          <span class="hidden lg:block text-gray-200" aria-hidden="true">|</span>
+          <a
+            class="flex items-center gap-1.5 hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            aria-label="Call Aida"
+          >
+            <svg class="w-4 h-4 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326 13.019 13.019 0 0 1 2 5V3.5Z" clip-rule="evenodd"/>
+            </svg>
+            011-2357 9237
+          </a>
         </div>
+
+        <!-- Hamburger button (mobile only) -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden flex items-center justify-center w-9 h-9 rounded-lg text-gray-700 hover:text-primary hover:bg-violet-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg id="menu-icon-open" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75Zm0 10.5a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75ZM2 10a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Z" clip-rule="evenodd"/>
+          </svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/>
+          </svg>
+        </button>
+
       </div>
     </nav>
+
+    <!-- Mobile menu drawer -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden bg-white/95 backdrop-blur-lg border-b border-violet-100/60 shadow-lg"
+      role="dialog"
+      aria-label="Mobile navigation"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
+        <a href="#about"      class="mobile-nav-link">About</a>
+        <a href="#experience" class="mobile-nav-link">Experience</a>
+        <a href="#work"       class="mobile-nav-link">Projects</a>
+        <a href="#design"     class="mobile-nav-link">Design</a>
+        <a href="#contact"    class="mobile-nav-link">Contact</a>
+        <div class="mt-3 pt-4 border-t border-gray-100 flex flex-col gap-3">
+          <a href="mailto:aidaasofiah@gmail.com" class="mobile-contact-link">
+            <svg class="w-4 h-4 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M2.003 5.884 10 9.882l7.997-3.998A2 2 0 0 0 16 4H4a2 2 0 0 0-1.997 1.884Z"/>
+              <path d="m18 8.118-8 4-8-4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.118Z"/>
+            </svg>
+            aidaasofiah@gmail.com
+          </a>
+          <a class="mobile-contact-link">
+            <svg class="w-4 h-4 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326 13.019 13.019 0 0 1 2 5V3.5Z" clip-rule="evenodd"/>
+            </svg>
+            011-2357 9237
+          </a>
+          <a
+            href="https://linkedin.com/in/aidasofiah/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-contact-link text-[#0A66C2] hover:text-[#004182]"
+          >
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <!-- ── Hero Section (Redesigned from Image) ── -->
+
+  <!-- ── Hero Section ── -->
   <main id="home">
-    <section class="relative min-h-screen flex items-center bg-[#FAFAFC] overflow-hidden pt-20">
-      
-      <!-- Subtle Dotted Grid Background -->
-      <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(#CBD5E1 1.5px, transparent 1.5px); background-size: 32px 32px; opacity: 0.5;"></div>
+    <section
+      class="relative min-h-screen flex items-center overflow-hidden bg-white"
+      aria-labelledby="hero-heading"
+    >
 
-      <div class="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 py-20 w-full">
-        
-        <!-- Eyebrow Tag -->
-        <div class="animate-fade-up opacity-0-init inline-flex items-center gap-2 bg-surface border border-[#EADDFF] text-primary text-[10px] sm:text-xs font-bold tracking-[0.1em] uppercase px-4 py-2 rounded-full mb-8">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true"></span>
-          UI/UX DESIGNER & CS STUDENT · GRADUATING JULY 2026
+      <!-- Decorative background blobs -->
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+        <!-- Top-right blob -->
+        <div
+          class="animate-blob absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-violet-100 opacity-60 blur-3xl"
+        ></div>
+        <!-- Bottom-left blob -->
+        <div
+          class="animate-blob absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full bg-purple-100 opacity-50 blur-3xl"
+          style="animation-delay: 3s;"
+        ></div>
+        <!-- Center accent blob -->
+        <div
+          class="animate-blob absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-50 opacity-40 blur-3xl"
+          style="animation-delay: 6s;"
+        ></div>
+
+        <!-- Subtle grid overlay -->
+        <div
+          class="absolute inset-0"
+          style="background-image: radial-gradient(circle, #6D28D910 1px, transparent 1px); background-size: 32px 32px;"
+        ></div>
+      </div>
+
+      <!-- Content -->
+      <div class="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 pt-32 pb-20 w-full">
+        <div class="max-w-3xl">
+
+          <!-- Eyebrow tag -->
+          <div
+            class="animate-fade-up opacity-0-init inline-flex items-center gap-2 bg-surface border border-violet-200 text-primary text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-8"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" aria-hidden="true"></span>
+            UI/UX Designer &amp; CS Student - Graduating July 2026
+          </div>
+
+          <!-- Main heading -->
+          <h1
+            id="hero-heading"
+            class="animate-fade-up-delay opacity-0-init text-4xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-gray-900 mb-6"
+          >
+            Aida<br />
+            <span class="text-primary">Sofiah</span><br />
+          </h1>
+
+          <!-- Summary -->
+          <p
+            class="animate-fade-up-delay-2 opacity-0-init text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mb-10 font-light"
+          >
+            I bring a unique blend of core design theory and technical development skills —
+            proficient in bridging the gap between design and development using
+            <span class="text-gray-700 font-medium">Figma</span>,
+            <span class="text-gray-700 font-medium">HTML</span>,
+            <span class="text-gray-700 font-medium">CSS</span>, and
+            <span class="text-gray-700 font-medium">JavaScript</span>
+            within modern workflows.
+          </p>
+
+          <!-- CTAs -->
+          <div class="animate-fade-up-delay-3 opacity-0-init flex flex-wrap items-center gap-4">
+            <!-- Primary CTA -->
+            <a
+              href="#work"
+              class="group inline-flex items-center gap-2.5 bg-primary hover:bg-white text-primary font-semibold text-sm px-7 py-4 rounded-full shadow-lg shadow-violet-300/40 hover:shadow-violet-400/50 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+            >
+              View My Work
+              <!-- Arrow icon -->
+              <svg
+                class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+
+            <!-- Secondary CTA -->
+            <a
+              href="mailto:aidaasofiah@gmail.com"
+              class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-light border border-violet-200 hover:border-primary px-7 py-4 rounded-full hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+            >
+              Get In Touch
+            </a>
+          </div>
+
+          <!-- Social proof / skill pills -->
+          <div class="animate-fade-up-delay-3 opacity-0-init mt-14 flex flex-wrap gap-2">
+            <span class="text-xs text-gray-500 self-center mr-1 font-medium tracking-wide uppercase">Skilled in</span>
+            <span class="skill-pill">Figma</span>
+            <span class="skill-pill">User Research</span>
+            <span class="skill-pill">Prototyping</span>
+            <span class="skill-pill">HTML &amp; CSS</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">Accessibility</span>
+          </div>
+
         </div>
-
-        <!-- Main Heading -->
-        <h1 class="animate-fade-up-delay opacity-0-init text-[3.5rem] sm:text-7xl lg:text-[5.5rem] font-black leading-[1.05] tracking-tight text-dark mb-8">
-          Aida Sofiah<br />
-          <span class="text-primary">Binti Ahmad</span><br />
-          Fikri
-        </h1>
-
-        <!-- Summary Paragraph -->
-        <p class="animate-fade-up-delay-2 opacity-0-init text-lg sm:text-xl text-graytxt leading-relaxed max-w-3xl mb-12 font-light">
-          I bring a unique blend of core design theory and technical development skills — 
-          proficient in bridging the gap between design and development using 
-          <span class="text-dark font-semibold">Figma</span>, 
-          <span class="text-dark font-semibold">HTML</span>, 
-          <span class="text-dark font-semibold">CSS</span>, and 
-          <span class="text-dark font-semibold">JavaScript</span> 
-          within modern workflows.
-        </p>
-
-        <!-- CTAs -->
-        <div class="animate-fade-up-delay-3 opacity-0-init flex flex-wrap items-center gap-5">
-          <!-- Primary CTA (Purple idle -> White hover) -->
-          <a href="#work" class="group inline-flex items-center gap-2 bg-primary hover:bg-white text-white hover:text-primary border border-transparent hover:border-primary font-semibold text-sm px-8 py-4 rounded-full shadow-[0_8px_20px_rgba(113,47,230,0.25)] hover:shadow-[0_8px_20px_rgba(113,47,230,0.15)] transition-all duration-300">
-            View My Work 
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-
-          <!-- Secondary CTA -->
-          <a href="mailto:aidaasofiah@gmail.com" class="inline-flex items-center gap-2 bg-transparent hover:bg-surface text-primary border border-[#EADDFF] hover:border-primary font-semibold text-sm px-8 py-4 rounded-full transition-all duration-300">
-            Get In Touch
-          </a>
-        </div>
-
       </div>
     </section>
 
     <!-- ── Work Experience ── -->
-    <section id="experience" class="py-28 bg-white">
+    <section
+      id="experience"
+      class="py-28 bg-slate-50/70"
+      aria-labelledby="experience-heading"
+    >
       <div class="max-w-4xl mx-auto px-6 lg:px-8">
+
+        <!-- Section header -->
         <div class="mb-16 reveal-section" style="opacity:0;transform:translateY(20px);">
           <div class="flex items-center gap-3 mb-5">
-            <span class="w-8 h-px bg-primary"></span>
+            <span class="w-8 h-px bg-primary" aria-hidden="true"></span>
             <span class="text-xs font-bold tracking-widest uppercase text-primary">Experience</span>
           </div>
-          <h2 class="text-4xl sm:text-5xl font-black text-dark tracking-tight leading-tight">Work Experience</h2>
+          <h2
+            id="experience-heading"
+            class="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight leading-tight"
+          >Work Experience</h2>
+          <p class="mt-3 text-gray-500 text-lg font-light">Where design meets real-world impact.</p>
         </div>
 
-        <!-- Entry 1: Pandai -->
-        <article class="reveal-section bg-white rounded-2xl border border-gray-100 shadow-lg shadow-gray-100/60 p-8 sm:p-10 mb-8 hover:shadow-xl transition-shadow" style="opacity:0;transform:translateY(24px);transition-delay:0.08s;">
-          <div class="flex flex-wrap justify-between gap-4 mb-6">
+        <!-- Entry 1: Pandai Education -->
+        <article
+          class="reveal-section bg-white rounded-2xl border border-gray-100 shadow-lg shadow-gray-100/60 p-8 sm:p-10 mb-8 hover:shadow-xl hover:shadow-violet-100/50 transition-shadow duration-300"
+          style="opacity:0;transform:translateY(24px);transition-delay:0.08s;"
+          aria-label="Pandai Education internship"
+        >
+          <!-- Card header -->
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
             <div>
-              <h3 class="text-2xl sm:text-3xl font-black text-dark">UI/UX Design Intern</h3>
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="text-[11px] font-bold tracking-wide uppercase bg-violet-50 text-primary border border-violet-200 px-3 py-1 rounded-full">EdTech</span>
+                <span class="text-[11px] font-bold tracking-wide uppercase bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full">Internship</span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-black text-gray-900 leading-tight">UI/UX Design Intern</h3>
               <p class="mt-1 text-lg font-semibold text-primary">Pandai Education Sdn. Bhd.</p>
             </div>
-            <div class="text-right">
-              <div class="inline-flex items-center gap-2 bg-surface border border-[#EADDFF] text-primary text-sm font-semibold px-4 py-2 rounded-full">
+            <div class="shrink-0 text-right">
+              <div class="inline-flex items-center gap-2 bg-surface border border-violet-200 text-primary text-sm font-semibold px-4 py-2.5 rounded-full">
+                <svg class="w-4 h-4 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clip-rule="evenodd"/>
+                </svg>
                 Mar — Sep 2025
               </div>
+              <p class="mt-1.5 text-xs text-gray-500 font-medium">7 months · Kuala Lumpur</p>
             </div>
           </div>
-          <div class="border-t border-gray-100 mb-7"></div>
-          <ul class="space-y-4 mb-8 text-graytxt leading-relaxed">
+
+          <div class="border-t border-gray-100 mb-7" aria-hidden="true"></div>
+
+          <!-- Bullet points -->
+          <ul class="space-y-4 mb-8" role="list">
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0"></span>
-              <span>Assisted in designing mobile and web interfaces using Figma for an EdTech platform serving over <strong class="text-dark font-semibold">1 million students</strong>.</span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="text-gray-600 leading-relaxed">Assisted in designing mobile and web interfaces using Figma for an EdTech platform serving over <strong class="text-gray-800 font-semibold">1 million students</strong>.</span>
             </li>
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0"></span>
-              <span>Revamped key user flows including <strong class="text-dark font-semibold">quiz-taking</strong>, <strong class="text-dark font-semibold">progress tracking</strong>, and <strong class="text-dark font-semibold">onboarding</strong>.</span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="text-gray-600 leading-relaxed">Revamped key user flows including <strong class="text-gray-800 font-semibold">quiz-taking</strong>, <strong class="text-gray-800 font-semibold">progress tracking</strong>, and <strong class="text-gray-800 font-semibold">onboarding experiences</strong>.</span>
             </li>
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0"></span>
-              <span>Contributed to maintaining and expanding Pandai's <strong class="text-dark font-semibold">design system</strong>.</span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="text-gray-600 leading-relaxed">Created wireframes, prototypes, and <strong class="text-gray-800 font-semibold">high-fidelity UI mockups</strong> across multiple product surfaces.</span>
+            </li>
+            <li class="flex items-start gap-3.5">
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="text-gray-600 leading-relaxed">Contributed to maintaining and expanding Pandai's <strong class="text-gray-800 font-semibold">design system</strong> — colour tokens, typography, and reusable components.</span>
+            </li>
+            <li class="flex items-start gap-3.5">
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="text-gray-600 leading-relaxed">Supported UX research through <strong class="text-gray-800 font-semibold">user interviews</strong> and <strong class="text-gray-800 font-semibold">competitor analysis</strong> to inform design decisions.</span>
             </li>
           </ul>
-          <a href="https://www.figma.com/design/TVrvylo8OHzaJ73PKlNuqc/Pandai-Teacher---Class-Insight--Copy-?node-id=4004-785&t=MdLOOeMwWayfSyYf-1" target="_blank" class="inline-flex items-center gap-2 bg-primary hover:bg-white text-white hover:text-primary border border-transparent hover:border-primary text-sm font-semibold px-6 py-3 rounded-full transition-all duration-300">
+
+          <!-- Impact bar -->
+          <div class="flex flex-wrap items-center gap-6 p-5 bg-surface rounded-xl border border-violet-100 mb-8">
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-3xl font-black text-primary">1M+</span>
+              <span class="text-sm text-gray-500 font-medium">students reached</span>
+            </div>
+            <div class="w-px h-8 bg-violet-200 hidden sm:block" aria-hidden="true"></div>
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-3xl font-black text-primary">3+</span>
+              <span class="text-sm text-gray-500 font-medium">core flows redesigned</span>
+            </div>
+            <div class="w-px h-8 bg-violet-200 hidden sm:block" aria-hidden="true"></div>
+            <div class="flex items-center gap-2 sm:ml-auto">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 38 57" aria-hidden="true">
+                <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/>
+                <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/>
+                <path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/>
+                <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/>
+                <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/>
+              </svg>
+              <span class="text-xs text-gray-500 font-medium">Primary tool: Figma</span>
+            </div>
+          </div>
+
+          <!-- CTA button -->
+          <a
+            href="https://www.figma.com/design/TVrvylo8OHzaJ73PKlNuqc/Pandai-Teacher---Class-Insight--Copy-?node-id=4004-785&t=MdLOOeMwWayfSyYf-1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2.5 bg-primary hover:bg-white text-white hover:text-primary text-sm font-semibold px-6 py-3 rounded-full shadow-md shadow-violet-300/40 hover:shadow-violet-400/50 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 38 57" aria-hidden="true">
+              <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/>
+              <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/>
+              <path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/>
+              <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/>
+              <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/>
+            </svg>
             View Pandai User Flow Wireframe
+            <svg class="w-3.5 h-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clip-rule="evenodd"/>
+              <path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.194a.75.75 0 0 0-.053 1.06Z" clip-rule="evenodd"/>
+            </svg>
           </a>
         </article>
 
         <!-- Entry 2: Klynn Global -->
-        <article class="reveal-section bg-white rounded-2xl border border-gray-100 shadow-lg shadow-gray-100/60 p-8 sm:p-10 hover:shadow-xl transition-shadow" style="opacity:0;transform:translateY(24px);transition-delay:0.18s;">
-          <div class="flex flex-wrap justify-between gap-4 mb-6">
+        <article
+          class="reveal-section bg-white rounded-2xl border border-gray-100 shadow-lg shadow-gray-100/60 p-8 sm:p-10 hover:shadow-xl hover:shadow-violet-100/50 transition-shadow duration-300"
+          style="opacity:0;transform:translateY(24px);transition-delay:0.18s;"
+          aria-label="Klynn Global freelance"
+        >
+          <!-- Card header -->
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
             <div>
-              <h3 class="text-2xl sm:text-3xl font-black text-dark">Freelance UI Designer</h3>
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="text-[11px] font-bold tracking-wide uppercase bg-amber-50 text-amber-700 border border-amber-200 px-3 py-1 rounded-full">Freelance</span>
+                <span class="text-[11px] font-bold tracking-wide uppercase bg-sky-50 text-sky-700 border border-sky-200 px-3 py-1 rounded-full">Remote</span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-black text-gray-900 leading-tight">Freelance UI Designer</h3>
               <p class="mt-1 text-lg font-semibold text-primary">Klynn Global</p>
             </div>
-            <div class="text-right">
-              <div class="inline-flex items-center gap-2 bg-surface border border-[#EADDFF] text-primary text-sm font-semibold px-4 py-2 rounded-full">
+            <div class="shrink-0 text-right">
+              <div class="inline-flex items-center gap-2 bg-surface border border-violet-200 text-primary text-sm font-semibold px-4 py-2.5 rounded-full">
+                <svg class="w-4 h-4 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clip-rule="evenodd"/>
+                </svg>
                 Apr — Jun 2025
+              </div>
+              <p class="mt-1.5 text-xs text-gray-500 font-medium">3 months · KL, Remote</p>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 mb-7" aria-hidden="true"></div>
+
+          <!-- Bullet points -->
+          <ul class="space-y-4 mb-8" role="list">
+            <li class="flex items-start gap-3.5">
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="text-gray-600 leading-relaxed">Designed high-fidelity mobile screens using Figma, focusing on <strong class="text-gray-800 font-semibold">layout</strong>, <strong class="text-gray-800 font-semibold">typography</strong>, and <strong class="text-gray-800 font-semibold">visual hierarchy</strong>.</span>
+            </li>
+            <li class="flex items-start gap-3.5">
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="text-gray-600 leading-relaxed">Developed UI components tailored for <strong class="text-gray-800 font-semibold">iOS and Android</strong> platforms with responsiveness and scalability in mind.</span>
+            </li>
+            <li class="flex items-start gap-3.5">
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="text-gray-600 leading-relaxed">Collaborated with clients to translate ideas and wireframes into clean, <strong class="text-gray-800 font-semibold">production-ready visuals</strong>.</span>
+            </li>
+            <li class="flex items-start gap-3.5">
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="text-gray-600 leading-relaxed">Ensured consistency in <strong class="text-gray-800 font-semibold">colour, spacing, and branding</strong> across all screens and user flows.</span>
+            </li>
+            <li class="flex items-start gap-3.5">
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="text-gray-600 leading-relaxed">Delivered structured design assets and specs, supporting smooth <strong class="text-gray-800 font-semibold">developer handoffs</strong> and accurate implementation.</span>
+            </li>
+          </ul>
+
+          <!-- Platform tags -->
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="text-xs text-gray-500 self-center font-medium mr-1">Platforms</span>
+            <span class="skill-pill">iOS</span>
+            <span class="skill-pill">Android</span>
+            <span class="skill-pill">Figma</span>
+            <span class="skill-pill">Design Handoff</span>
+          </div>
+
+          <!-- CTA button -->
+          <a
+            href="https://www.figma.com/design/0oRHFLorp8OkZMchWYv9k5/Klynn-Project?node-id=2-17313&t=67cWsJ4OuTSWsast-1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2.5 bg-primary hover:bg-white text-white hover:text-primary text-sm font-semibold px-6 py-3 rounded-full shadow-md shadow-violet-300/40 hover:shadow-violet-400/50 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 38 57" aria-hidden="true">
+              <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/>
+              <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/>
+              <path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/>
+              <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/>
+              <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/>
+            </svg>
+            View Klynn Wireframe &amp; Prototype
+            <svg class="w-3.5 h-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clip-rule="evenodd"/>
+              <path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.194a.75.75 0 0 0-.053 1.06Z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- ── Technical Projects ── -->
+    <section
+      id="work"
+      class="py-28 bg-white"
+      aria-labelledby="projects-heading"
+    >
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+
+        <!-- Section header -->
+        <div class="mb-16 reveal-section" style="opacity:0;transform:translateY(20px);">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-8 h-px bg-primary" aria-hidden="true"></span>
+            <span class="text-xs font-bold tracking-widest uppercase text-primary">Projects</span>
+          </div>
+          <h2
+            id="projects-heading"
+            class="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight"
+          >Technical Projects</h2>
+          <p class="mt-3 text-gray-500 text-lg font-light">Designed and built from the ground up.</p>
+        </div>
+
+        <!-- Project grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- ── Card 1: Local Cafe Website ── -->
+          <div
+            class="group relative flex flex-col bg-white rounded-2xl border border-gray-100 shadow-md shadow-gray-100/80 overflow-hidden hover:shadow-xl hover:shadow-violet-100/60 hover:-translate-y-1 transition-all duration-300 reveal-section"
+            style="opacity:0;transform:translateY(24px);transition-delay:0.05s;"
+          >
+            <!-- Accent top bar -->
+            <div class="h-1 bg-gradient-to-r from-primary via-accent to-indigo-400 shrink-0"></div>
+
+            <div class="flex flex-col flex-1 p-8">
+              <!-- Card top row: number + GitHub icon -->
+              <div class="flex items-start justify-between mb-5">
+                <span class="text-6xl font-black text-gray-100 leading-none select-none" aria-hidden="true">01</span>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-primary transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  aria-label="View Local Cafe Website on GitHub"
+                >
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"/>
+                  </svg>
+                </a>
+              </div>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-200">
+                Local Cafe Website
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed flex-1 mb-6">
+                Designed and developed a responsive web application for a local cafe using
+                VS Code and Claude Code. Managed version control with GitHub, implemented
+                Firebase for the backend, and deployed via Cloudflare.
+              </p>
+
+              <!-- Tech pills -->
+              <div class="flex flex-wrap gap-2 mb-7">
+                <span class="skill-pill">HTML/CSS</span>
+                <span class="skill-pill">JavaScript</span>
+                <span class="skill-pill">Firebase</span>
+                <span class="skill-pill">Cloudflare</span>
+                <span class="skill-pill">Claude Code</span>
+              </div>
+
+              <!-- Action buttons -->
+              <div class="flex items-center gap-3 mt-auto">
+                <a
+                  href="https://molieskafe.aidaasofiah.workers.dev/"
+                  class="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-white text-white hover:text-primary text-sm font-semibold py-2.5 px-5 rounded-full shadow-sm shadow-violet-300/40 hover:shadow-violet-400/50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >
+                  View Live Project
+                  <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/>
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
-          <div class="border-t border-gray-100 mb-7"></div>
-          <ul class="space-y-4 mb-8 text-graytxt leading-relaxed">
-            <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0"></span>
-              <span>Designed high-fidelity mobile screens using Figma, focusing on <strong class="text-dark font-semibold">layout, typography, and visual hierarchy</strong>.</span>
-            </li>
-            <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0"></span>
-              <span>Developed UI components tailored for <strong class="text-dark font-semibold">iOS and Android</strong> platforms.</span>
-            </li>
-            <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0"></span>
-              <span>Delivered design assets supporting smooth <strong class="text-dark font-semibold">developer handoffs</strong>.</span>
-            </li>
-          </ul>
-          <a href="https://www.figma.com/design/0oRHFLorp8OkZMchWYv9k5/Klynn-Project?node-id=2-17313&t=67cWsJ4OuTSWsast-1" target="_blank" class="inline-flex items-center gap-2 bg-primary hover:bg-white text-white hover:text-primary border border-transparent hover:border-primary text-sm font-semibold px-6 py-3 rounded-full transition-all duration-300">
-            View Klynn Wireframe & Prototype
-          </a>
-        </article>
+
+          <!-- ── Card 2: Car Rental Website ── -->
+          <div
+            class="group relative flex flex-col bg-white rounded-2xl border border-gray-100 shadow-md shadow-gray-100/80 overflow-hidden hover:shadow-xl hover:shadow-violet-100/60 hover:-translate-y-1 transition-all duration-300 reveal-section"
+            style="opacity:0;transform:translateY(24px);transition-delay:0.15s;"
+          >
+            <div class="h-1 bg-gradient-to-r from-indigo-500 via-primary to-accent shrink-0"></div>
+
+            <div class="flex flex-col flex-1 p-8">
+              <div class="flex items-start justify-between mb-5">
+                <span class="text-6xl font-black text-gray-100 leading-none select-none" aria-hidden="true">02</span>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-primary transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  aria-label="View Car Rental Website on GitHub"
+                >
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"/>
+                  </svg>
+                </a>
+              </div>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-200">
+                Car Rental Website
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed flex-1 mb-6">
+                Bridged design and development by prototyping in Figma first, then building
+                the front-end with HTML, CSS, and JavaScript. Integrated a MySQL database
+                for booking and vehicle management.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-7">
+                <span class="skill-pill">Figma</span>
+                <span class="skill-pill">HTML/CSS</span>
+                <span class="skill-pill">JavaScript</span>
+                <span class="skill-pill">MySQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Card 3: Photobooth ── -->
+          <div
+            class="group relative flex flex-col bg-white rounded-2xl border border-gray-100 shadow-md shadow-gray-100/80 overflow-hidden hover:shadow-xl hover:shadow-violet-100/60 hover:-translate-y-1 transition-all duration-300 reveal-section"
+            style="opacity:0;transform:translateY(24px);transition-delay:0.05s;"
+          >
+            <div class="h-1 bg-gradient-to-r from-violet-400 via-purple-500 to-primary shrink-0"></div>
+
+            <div class="flex flex-col flex-1 p-8">
+              <div class="flex items-start justify-between mb-5">
+                <span class="text-6xl font-black text-gray-100 leading-none select-none" aria-hidden="true">03</span>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-primary transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  aria-label="View Photobooth on GitHub"
+                >
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"/>
+                  </svg>
+                </a>
+              </div>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-200">
+                Photobooth
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed flex-1 mb-6">
+                Developed a functional web-based photobooth application using Python in
+                VS Code. Hosted and version-controlled directly via GitHub.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-7">
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">GitHub Pages</span>
+                <span class="skill-pill">VS Code</span>
+              </div>
+
+              <div class="flex items-center gap-3 mt-auto">
+                <a
+                  href="https://aidarollin.github.io/photobooth-web-app/"
+                  class="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-white text-white hover:text-primary text-sm font-semibold py-2.5 px-5 rounded-full shadow-sm shadow-violet-300/40 hover:shadow-violet-400/50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >
+                  View Live Project
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Card 4: Business Intelligence System ── -->
+          <div
+            class="group relative flex flex-col bg-white rounded-2xl border border-gray-100 shadow-md shadow-gray-100/80 overflow-hidden hover:shadow-xl hover:shadow-violet-100/60 hover:-translate-y-1 transition-all duration-300 reveal-section"
+            style="opacity:0;transform:translateY(24px);transition-delay:0.15s;"
+          >
+            <div class="h-1 bg-gradient-to-r from-primary via-violet-400 to-purple-400 shrink-0"></div>
+
+            <div class="flex flex-col flex-1 p-8">
+              <div class="flex items-start justify-between mb-5">
+                <span class="text-6xl font-black text-gray-100 leading-none select-none" aria-hidden="true">04</span>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-primary transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  aria-label="View Business Intelligence System on GitHub"
+                >
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"/>
+                  </svg>
+                </a>
+              </div>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-200">
+                Business Intelligence System
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed flex-1 mb-6">
+                Designed an ETL pipeline to extract, transform, and load data, then built
+                an interactive dashboard to monitor and visualise key business performance
+                metrics.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-7">
+                <span class="skill-pill">ETL Pipeline</span>
+                <span class="skill-pill">SQL</span>
+                <span class="skill-pill">Dashboard</span>
+                <span class="skill-pill">Data Viz</span>
+              </div>
+
+              <div class="flex items-center gap-3 mt-auto">
+                <a
+                  href="#"
+                  class="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-white text-white hover:text-primary text-sm font-semibold py-2.5 px-5 rounded-full shadow-sm shadow-violet-300/40 hover:shadow-violet-400/50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >
+                  View Live Project
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /grid -->
       </div>
     </section>
 
-    <!-- ── Technical Projects ── -->
-    <section id="work" class="py-28 bg-[#FAFAFC]">
+
+    <!-- ── Design Portfolio ── -->
+    <section
+      id="design"
+      class="py-28 bg-slate-900"
+      aria-labelledby="design-heading"
+    >
       <div class="max-w-6xl mx-auto px-6 lg:px-8">
+
+        <!-- Section header -->
         <div class="mb-16 reveal-section" style="opacity:0;transform:translateY(20px);">
           <div class="flex items-center gap-3 mb-5">
-            <span class="w-8 h-px bg-primary"></span>
-            <span class="text-xs font-bold tracking-widest uppercase text-primary">Projects</span>
+            <span class="w-8 h-px bg-accent" aria-hidden="true"></span>
+            <span class="text-xs font-bold tracking-widest uppercase text-accent">Design Work</span>
           </div>
-          <h2 class="text-4xl sm:text-5xl font-black text-dark tracking-tight">Technical Projects</h2>
+          <h2
+            id="design-heading"
+            class="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight"
+          >Design Portfolio</h2>
+          <p class="text-2xl font-light text-violet-300 mt-1">Wireframes &amp; Prototypes</p>
+          <p class="mt-5 text-slate-400 text-base leading-relaxed max-w-2xl">
+            A dedicated space for the visual design work behind the products — from
+            early wireframes and user flows to high-fidelity Figma prototypes.
+            Embed links are placeholder; real prototypes are coming soon.
+          </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Card 1: Local Cafe -->
-          <div class="group flex flex-col bg-white rounded-2xl border border-gray-100 shadow-md p-8 hover:-translate-y-1 transition-transform reveal-section" style="opacity:0;transform:translateY(24px);">
-            <h3 class="text-xl font-bold text-dark mb-3">Local Cafe Website</h3>
-            <p class="text-graytxt text-sm leading-relaxed flex-1 mb-6">
-              Designed and developed a responsive web application for a local cafe using VS Code and Claude Code. Managed version control with GitHub, implemented Firebase for the backend, and deployed via Cloudflare.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-7">
-              <span class="skill-pill">HTML/CSS</span><span class="skill-pill">Firebase</span><span class="skill-pill">Claude Code</span>
+        <!-- Figma embed grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+          <!-- ── Embed 1: Car Rental Prototype ── -->
+          <div class="flex flex-col reveal-section" style="opacity:0;transform:translateY(24px);transition-delay:0.05s;">
+            <!-- Browser chrome mockup -->
+            <div class="group rounded-xl overflow-hidden border border-slate-700/50 shadow-2xl hover:border-violet-500/40 hover:shadow-violet-900/40 transition-all duration-300">
+              <!-- Chrome top bar -->
+              <div class="bg-slate-800 px-4 py-2.5 flex items-center gap-3 border-b border-slate-700/60">
+                <!-- Traffic lights -->
+                <div class="flex items-center gap-1.5 shrink-0">
+                  <span class="w-3 h-3 rounded-full bg-red-400/60"></span>
+                  <span class="w-3 h-3 rounded-full bg-yellow-400/60"></span>
+                  <span class="w-3 h-3 rounded-full bg-green-400/60"></span>
+                </div>
+                <!-- URL bar -->
+                <div class="flex-1 flex items-center gap-2 bg-slate-700/50 rounded-md px-3 py-1 min-w-0">
+                  <svg class="w-3 h-3 text-slate-500 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-[11px] text-slate-400 font-mono truncate">figma.com/proto/car-rental-website</span>
+                </div>
+                <!-- Figma mark -->
+                <svg class="w-4 h-4 shrink-0 opacity-50" viewBox="0 0 38 57" aria-hidden="true">
+                  <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/>
+                  <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/>
+                  <path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/>
+                  <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/>
+                  <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/>
+                </svg>
+              </div>
+              <!-- Screenshot: replace src="#" with your exported Figma image path -->
+              <div class="relative bg-slate-800 overflow-hidden" style="aspect-ratio:4/3;">
+                <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center px-6">
+                  <div class="w-11 h-11 rounded-xl border border-slate-600 bg-slate-700/50 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M1 5.25A2.25 2.25 0 0 1 3.25 3h13.5A2.25 2.25 0 0 1 19 5.25v9.5A2.25 2.25 0 0 1 16.75 17H3.25A2.25 2.25 0 0 1 1 14.75v-9.5Zm1.5 5.81v3.69c0 .414.336.75.75.75h13.5a.75.75 0 0 0 .75-.75v-2.69l-2.22-2.219a.75.75 0 0 0-1.06 0l-1.91 1.909.47.47a.75.75 0 1 1-1.06 1.06L6.53 8.091a.75.75 0 0 0-1.06 0l-2.97 2.97ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd"/>
+                    </svg>
+                  </div>
+                  <p class="text-slate-500 text-xs font-medium">Add Figma screenshot</p>
+                  <p class="text-slate-600 text-[10px]">Change src="#" to your image path</p>
+                </div>
+                <img
+                  src="#"
+                  alt="Car Rental Website — Figma prototype screenshot"
+                  class="absolute inset-0 w-full h-full object-cover z-10"
+                  onerror="this.style.display='none'"
+                />
+              </div>
             </div>
-            <a href="https://molieskafe.aidaasofiah.workers.dev/" target="_blank" class="text-center bg-primary hover:bg-white text-white hover:text-primary border border-transparent hover:border-primary text-sm font-semibold py-2.5 px-5 rounded-full transition-all duration-300">View Live Project</a>
+            <!-- Caption -->
+            <div class="mt-5 px-1">
+              <div class="flex items-center justify-between gap-3 mb-2">
+                <h3 class="text-white font-bold text-base leading-snug">Car Rental Website</h3>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-violet-400 bg-violet-400/10 border border-violet-400/20 px-2.5 py-1 rounded-full shrink-0">Prototype</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Full interactive Figma prototype of the car rental web app — covering
+                the booking flow, vehicle listing, and checkout experience.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="figma-tag">Figma</span>
+                <span class="figma-tag">UI Design</span>
+                <span class="figma-tag">Prototype</span>
+                <span class="figma-tag">Web</span>
+              </div>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-violet-300 hover:text-white bg-violet-400/5 hover:bg-violet-400/15 border border-violet-400/20 hover:border-violet-400/50 px-4 py-2 rounded-full transition-all duration-200"
+              >
+                <svg class="w-3 h-3" viewBox="0 0 38 57" aria-hidden="true"><path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/><path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/><path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/></svg>
+                Open in Figma
+                <svg class="w-3 h-3 opacity-60" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.194a.75.75 0 0 0-.053 1.06Z" clip-rule="evenodd"/></svg>
+              </a>
+            </div>
           </div>
 
-          <!-- Card 2: Car Rental -->
-          <div class="group flex flex-col bg-white rounded-2xl border border-gray-100 shadow-md p-8 hover:-translate-y-1 transition-transform reveal-section" style="opacity:0;transform:translateY(24px);">
-            <h3 class="text-xl font-bold text-dark mb-3">Car Rental Website</h3>
-            <p class="text-graytxt text-sm leading-relaxed flex-1 mb-6">
-              Bridged design and development by prototyping in Figma first, then building the front-end with HTML, CSS, and JavaScript. Integrated a MySQL database.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-7">
-              <span class="skill-pill">Figma</span><span class="skill-pill">JavaScript</span><span class="skill-pill">MySQL</span>
+          <!-- ── Embed 2: Pandai User Flows ── -->
+          <div class="flex flex-col reveal-section" style="opacity:0;transform:translateY(24px);transition-delay:0.15s;">
+            <div class="group rounded-xl overflow-hidden border border-slate-700/50 shadow-2xl hover:border-violet-500/40 hover:shadow-violet-900/40 transition-all duration-300">
+              <!-- Chrome top bar -->
+              <div class="bg-slate-800 px-4 py-2.5 flex items-center gap-3 border-b border-slate-700/60">
+                <div class="flex items-center gap-1.5 shrink-0">
+                  <span class="w-3 h-3 rounded-full bg-red-400/60"></span>
+                  <span class="w-3 h-3 rounded-full bg-yellow-400/60"></span>
+                  <span class="w-3 h-3 rounded-full bg-green-400/60"></span>
+                </div>
+                <div class="flex-1 flex items-center gap-2 bg-slate-700/50 rounded-md px-3 py-1 min-w-0">
+                  <svg class="w-3 h-3 text-slate-500 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-[11px] text-slate-400 font-mono truncate">figma.com/proto/pandai-user-flows</span>
+                </div>
+                <svg class="w-4 h-4 shrink-0 opacity-50" viewBox="0 0 38 57" aria-hidden="true">
+                  <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/>
+                  <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/>
+                  <path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/>
+                  <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/>
+                  <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/>
+                </svg>
+              </div>
+              <!-- Screenshot: replace src="#" with your exported Figma image path -->
+              <div class="relative bg-slate-800 overflow-hidden" style="aspect-ratio:4/3;">
+                <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center px-6">
+                  <div class="w-11 h-11 rounded-xl border border-slate-600 bg-slate-700/50 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M1 5.25A2.25 2.25 0 0 1 3.25 3h13.5A2.25 2.25 0 0 1 19 5.25v9.5A2.25 2.25 0 0 1 16.75 17H3.25A2.25 2.25 0 0 1 1 14.75v-9.5Zm1.5 5.81v3.69c0 .414.336.75.75.75h13.5a.75.75 0 0 0 .75-.75v-2.69l-2.22-2.219a.75.75 0 0 0-1.06 0l-1.91 1.909.47.47a.75.75 0 1 1-1.06 1.06L6.53 8.091a.75.75 0 0 0-1.06 0l-2.97 2.97ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd"/>
+                    </svg>
+                  </div>
+                  <p class="text-slate-500 text-xs font-medium">Add Figma screenshot</p>
+                  <p class="text-slate-600 text-[10px]">Change src="#" to your image path</p>
+                </div>
+                <img
+                  src="#"
+                  alt="Pandai - User Flows & Wireframes screenshot"
+                  class="absolute inset-0 w-full h-full object-cover z-10"
+                  onerror="this.style.display='none'"
+                />
+              </div>
             </div>
-            <a href="#" class="text-center bg-primary hover:bg-white text-white hover:text-primary border border-transparent hover:border-primary text-sm font-semibold py-2.5 px-5 rounded-full transition-all duration-300">View GitHub Repo</a>
+            <div class="mt-5 px-1">
+              <div class="flex items-center justify-between gap-3 mb-2">
+                <h3 class="text-white font-bold text-base leading-snug">Pandai — User Flows</h3>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2.5 py-1 rounded-full shrink-0">Wireframes</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Wireframes and annotated user flow diagrams for the quiz-taking,
+                progress tracking of teachers at Pandai.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="figma-tag">Figma</span>
+                <span class="figma-tag">Wireframes</span>
+                <span class="figma-tag">User Flows</span>
+                <span class="figma-tag">EdTech</span>
+              </div>
+              <a
+                href="https://www.figma.com/design/TVrvylo8OHzaJ73PKlNuqc/Pandai-Teacher---Class-Insight--Copy-?node-id=4004-785&t=MdLOOeMwWayfSyYf-1••"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-violet-300 hover:text-white bg-violet-400/5 hover:bg-violet-400/15 border border-violet-400/20 hover:border-violet-400/50 px-4 py-2 rounded-full transition-all duration-200"
+              >
+                <svg class="w-3 h-3" viewBox="0 0 38 57" aria-hidden="true"><path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/><path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/><path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/></svg>
+                Open in Figma
+                <svg class="w-3 h-3 opacity-60" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.194a.75.75 0 0 0-.053 1.06Z" clip-rule="evenodd"/></svg>
+              </a>
+            </div>
           </div>
 
-          <!-- Card 3: Photobooth -->
-          <div class="group flex flex-col bg-white rounded-2xl border border-gray-100 shadow-md p-8 hover:-translate-y-1 transition-transform reveal-section" style="opacity:0;transform:translateY(24px);">
-            <h3 class="text-xl font-bold text-dark mb-3">Photobooth</h3>
-            <p class="text-graytxt text-sm leading-relaxed flex-1 mb-6">
-              Developed a functional web-based photobooth application using Python in VS Code. Hosted and version-controlled directly via GitHub Pages.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-7">
-              <span class="skill-pill">Python</span><span class="skill-pill">GitHub Pages</span>
+          <!-- ── Embed 3: Pandai Mobile UI ── -->
+          <div class="flex flex-col reveal-section" style="opacity:0;transform:translateY(24px);transition-delay:0.25s;">
+            <!-- Mobile device mockup -->
+            <div class="group flex justify-center">
+              <!-- Phone shell -->
+              <div class="relative w-[220px] shrink-0">
+                <!-- Outer frame -->
+                <div class="bg-slate-800 rounded-[2.75rem] p-[5px] shadow-2xl border border-slate-700/60 group-hover:border-violet-500/40 transition-colors duration-300">
+                  <!-- Side buttons (decorative) -->
+                  <div class="absolute -right-[3px] top-20 w-[3px] h-10 bg-slate-700 rounded-r-sm" aria-hidden="true"></div>
+                  <div class="absolute -left-[3px] top-16 w-[3px] h-7 bg-slate-700 rounded-l-sm" aria-hidden="true"></div>
+                  <div class="absolute -left-[3px] top-28 w-[3px] h-7 bg-slate-700 rounded-l-sm" aria-hidden="true"></div>
+                  <!-- Screen bezel -->
+                  <div class="bg-slate-900 rounded-[2.35rem] overflow-hidden relative">
+                    <!-- Status bar -->
+                    <div class="bg-slate-900 px-5 pt-3 pb-1 flex items-center justify-between">
+                      <span class="text-[9px] text-slate-500 font-semibold">9:41</span>
+                      <!-- Dynamic island -->
+                      <div class="w-14 h-4 bg-slate-950 rounded-full" aria-hidden="true"></div>
+                      <div class="flex items-center gap-1">
+                        <svg class="w-3 h-2 text-slate-500" viewBox="0 0 15 11" fill="currentColor" aria-hidden="true"><rect x="0" y="3" width="3" height="8" rx=".5"/><rect x="4" y="2" width="3" height="9" rx=".5"/><rect x="8" y="0" width="3" height="11" rx=".5"/><rect x="12" y="0" width="3" height="11" rx=".5" opacity=".3"/></svg>
+                        <svg class="w-2.5 h-2.5 text-slate-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Z" clip-rule="evenodd"/></svg>
+                      </div>
+                    </div>
+                    <!-- Screenshot: replace src="#" with your exported Figma mobile screenshot -->
+                    <div class="relative bg-slate-900 overflow-hidden" style="aspect-ratio:9/17;">
+                      <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center px-4">
+                        <div class="w-9 h-9 rounded-xl border border-slate-700 bg-slate-800 flex items-center justify-center">
+                          <svg class="w-4 h-4 text-slate-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M1 5.25A2.25 2.25 0 0 1 3.25 3h13.5A2.25 2.25 0 0 1 19 5.25v9.5A2.25 2.25 0 0 1 16.75 17H3.25A2.25 2.25 0 0 1 1 14.75v-9.5Zm1.5 5.81v3.69c0 .414.336.75.75.75h13.5a.75.75 0 0 0 .75-.75v-2.69l-2.22-2.219a.75.75 0 0 0-1.06 0l-1.91 1.909.47.47a.75.75 0 1 1-1.06 1.06L6.53 8.091a.75.75 0 0 0-1.06 0l-2.97 2.97ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd"/>
+                          </svg>
+                        </div>
+                        <p class="text-slate-600 text-[10px] font-medium leading-snug">Add mobile<br>screenshot</p>
+                      </div>
+                      <img
+                        src="#"
+                        alt="Pandai — High-Fidelity Mobile UI screenshot"
+                        class="absolute inset-0 w-full h-full object-cover z-10"
+                        onerror="this.style.display='none'"
+                      />
+                    </div>
+                    <!-- Home indicator -->
+                    <div class="bg-slate-900 flex justify-center py-2" aria-hidden="true">
+                      <div class="w-24 h-1 bg-slate-600 rounded-full"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <a href="https://aidarollin.github.io/photobooth-web-app/" target="_blank" class="text-center bg-primary hover:bg-white text-white hover:text-primary border border-transparent hover:border-primary text-sm font-semibold py-2.5 px-5 rounded-full transition-all duration-300">View Live Project</a>
+            <div class="mt-6 px-1">
+              <div class="flex items-center justify-between gap-3 mb-2">
+                <h3 class="text-white font-bold text-base leading-snug">Pandai — Mobile UI</h3>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-sky-400 bg-sky-400/10 border border-sky-400/20 px-2.5 py-1 rounded-full shrink-0">Hi-Fi</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                High-fidelity mobile UI mockups for the Pandai app — covering
+                onboarding screens, quiz interface, and progress tracking views.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="figma-tag">Figma</span>
+                <span class="figma-tag">Mobile UI</span>
+                <span class="figma-tag">iOS</span>
+                <span class="figma-tag">Android</span>
+              </div>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-violet-300 hover:text-white bg-violet-400/5 hover:bg-violet-400/15 border border-violet-400/20 hover:border-violet-400/50 px-4 py-2 rounded-full transition-all duration-200"
+              >
+                <svg class="w-3 h-3" viewBox="0 0 38 57" aria-hidden="true"><path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/><path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/><path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/></svg>
+                Open in Figma
+                <svg class="w-3 h-3 opacity-60" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.194a.75.75 0 0 0-.053 1.06Z" clip-rule="evenodd"/></svg>
+              </a>
+            </div>
           </div>
 
-          <!-- Card 4: BI System -->
-          <div class="group flex flex-col bg-white rounded-2xl border border-gray-100 shadow-md p-8 hover:-translate-y-1 transition-transform reveal-section" style="opacity:0;transform:translateY(24px);">
-            <h3 class="text-xl font-bold text-dark mb-3">Business Intelligence System</h3>
-            <p class="text-graytxt text-sm leading-relaxed flex-1 mb-6">
-              Designed an ETL pipeline to extract, transform, and load data, then built an interactive dashboard to monitor and visualise key business performance metrics.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-7">
-              <span class="skill-pill">ETL Pipeline</span><span class="skill-pill">SQL</span>
-            </div>
-            <a href="#" class="text-center bg-primary hover:bg-white text-white hover:text-primary border border-transparent hover:border-primary text-sm font-semibold py-2.5 px-5 rounded-full transition-all duration-300">View GitHub Repo</a>
-          </div>
-        </div>
+        </div><!-- /figma grid -->
+
       </div>
     </section>
 
-    <!-- ── Footer ── -->
-    <footer id="contact" class="bg-dark text-gray-300">
-      <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <a href="#home" class="text-2xl font-black text-white">Aida<span class="text-primary">.</span></a>
-            <p class="mt-4 text-sm text-gray-400 max-w-xs">
-              UI/UX Designer & Computer Science student, passionate about building experiences that are both beautiful and accessible.
-            </p>
-            <div class="mt-6">
-              <p class="text-white font-medium">aidaasofiah@gmail.com</p>
-              <p class="text-gray-400">011-2357 9237</p>
-            </div>
-          </div>
-          <div class="md:text-right">
-            <a href="https://linkedin.com/in/aidasofiah/" target="_blank" class="inline-flex items-center gap-2 bg-[#0A66C2] hover:bg-[#004182] text-white font-semibold px-6 py-3 rounded-full transition-colors">
-              Connect on LinkedIn
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="border-t border-gray-800 py-6 text-center text-xs text-gray-500">
-        <p>© 2026 Aida Sofiah. All rights reserved.</p>
-      </div>
-    </footer>
   </main>
+
+
+  <!-- ── Footer ── -->
+  <footer
+    id="contact"
+    class="bg-gray-950 text-gray-300"
+    aria-labelledby="footer-heading"
+  >
+    <!-- Top section -->
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 pt-20 pb-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+
+        <!-- Brand column -->
+        <div class="sm:col-span-2 lg:col-span-1">
+          <a
+            href="#home"
+            class="text-2xl font-black tracking-tight text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            aria-label="Back to top"
+          >Aida<span class="text-primary">.</span></a>
+          <p class="mt-4 text-sm text-gray-400 leading-relaxed max-w-xs">
+            UI/UX Designer &amp; Computer Science student, passionate about
+            building experiences that are both beautiful and accessible.
+          </p>
+          <!-- LinkedIn -->
+          <a
+            href="https://linkedin.com/in/aidasofiah/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-6 inline-flex items-center gap-2.5 text-sm font-semibold text-white bg-[#0A66C2] hover:bg-[#004182] px-5 py-2.5 rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A66C2] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
+            aria-label="Connect on LinkedIn"
+          >
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            Connect on LinkedIn
+          </a>
+        </div>
+
+        <!-- Navigation column -->
+        <div>
+          <h2 id="footer-heading" class="text-xs font-bold tracking-widest uppercase text-gray-500 mb-5">Navigate</h2>
+          <ul class="space-y-3 text-sm" role="list">
+            <li><a href="#home"       class="hover:text-white transition-colors duration-200">Home</a></li>
+            <li><a href="#about"      class="hover:text-white transition-colors duration-200">About</a></li>
+            <li><a href="#experience" class="hover:text-white transition-colors duration-200">Experience</a></li>
+            <li><a href="#work"       class="hover:text-white transition-colors duration-200">Projects</a></li>
+            <li><a href="#design"     class="hover:text-white transition-colors duration-200">Design Portfolio</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact column -->
+        <div>
+          <h2 class="text-xs font-bold tracking-widest uppercase text-gray-500 mb-5">Contact</h2>
+          <ul class="space-y-3 text-sm" role="list">
+            <li>
+              <a
+                href="mailto:aidaasofiah@gmail.com"
+                class="flex items-center gap-2.5 hover:text-white transition-colors duration-200 break-all"
+              >
+                <svg class="w-4 h-4 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M2.003 5.884 10 9.882l7.997-3.998A2 2 0 0 0 16 4H4a2 2 0 0 0-1.997 1.884Z"/>
+                  <path d="m18 8.118-8 4-8-4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.118Z"/>
+                </svg>
+                aidaasofiah@gmail.com
+              </a>
+            </li>
+            <li>
+              <a
+                
+                class="flex items-center gap-2.5 hover:text-white transition-colors duration-200"
+              >
+                <svg class="w-4 h-4 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326 13.019 13.019 0 0 1 2 5V3.5Z" clip-rule="evenodd"/>
+                </svg>
+                011-2357 9237
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://linkedin.com/in/aidasofiah/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2.5 hover:text-white transition-colors duration-200"
+              >
+                <svg class="w-4 h-4 text-[#0A66C2] shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                linkedin.com/in/aidasofiah
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Location / availability column -->
+        <div>
+          <h2 class="text-xs font-bold tracking-widest uppercase text-gray-500 mb-5">Availability</h2>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" aria-hidden="true"></span>
+            <span class="text-sm text-emerald-400 font-semibold">Open to opportunities</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Based in Kuala Lumpur, Malaysia.<br />
+            Graduating <span class="text-gray-300 font-medium">July 2026</span>.
+          </p>
+          <!--<p class="mt-4 text-sm text-gray-400">
+            Available for full-time UI/UX roles and freelance projects.
+          </p>-->
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-gray-800">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+        <p>© 2026 Aida Sofiah. All rights reserved.</p>
+        <!--<p class="flex items-center gap-1.5">
+          Designed &amp; built with
+          <svg class="w-3.5 h-3.5 text-red-400 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="m9.653 16.915-.005-.003-.019-.01a20.759 20.759 0 0 1-1.162-.682 22.045 22.045 0 0 1-2.582-2.184C4.045 12.733 2 10.352 2 7.5a4.5 4.5 0 0 1 8-2.828A4.5 4.5 0 0 1 18 7.5c0 2.852-2.044 5.233-3.885 6.536a22.049 22.049 0 0 1-3.744 2.865l-.019.01-.005.003h-.002a.739.739 0 0 1-.69.001l-.002-.001Z"/>
+          </svg>
+          in Kuala Lumpur
+        </p>-->
+      </div>
+    </div>
+
+  </footer>
+
 
   <!-- Runtime JS -->
   <script>
-    // Intersection Observer for scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    /* ==========================================================================
+       Runtime behaviour for Aida Sofiah's portfolio.
 
-    document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
+       1. Scroll-reveal   — fades + slides up .reveal-section elements as they
+                            enter the viewport.
+       2. Active nav link — highlights the link matching the visible section.
+       3. Mobile menu     — toggles the hamburger drawer on small screens.
+       ========================================================================== */
+
+
+    /* --------------------------------------------------------------------------
+       1. Scroll-reveal
+       -------------------------------------------------------------------------- */
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          entry.target.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+          entry.target.style.opacity    = '1';
+          entry.target.style.transform  = 'translateY(0)';
+
+          revealObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll('.reveal-section').forEach((el) => {
+      revealObserver.observe(el);
+    });
+
+
+    /* --------------------------------------------------------------------------
+       2. Active nav link
+       -------------------------------------------------------------------------- */
+
+    const sections = document.querySelectorAll('section[id], main[id]');
+    const navLinks  = document.querySelectorAll('nav a[href^="#"]');
+
+    const navObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const id = entry.target.getAttribute('id');
+
+          navLinks.forEach((link) => {
+            link.classList.toggle('nav-active', link.getAttribute('href') === `#${id}`);
+          });
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    );
+
+    sections.forEach((section) => navObserver.observe(section));
+
+
+    /* --------------------------------------------------------------------------
+       3. Mobile menu
+       -------------------------------------------------------------------------- */
+
+    const mobileMenuBtn  = document.getElementById('mobile-menu-btn');
+    const mobileMenu     = document.getElementById('mobile-menu');
+    const menuIconOpen   = document.getElementById('menu-icon-open');
+    const menuIconClose  = document.getElementById('menu-icon-close');
+
+    if (mobileMenuBtn && mobileMenu) {
+
+      function toggleMenu(forceClose = false) {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        const shouldClose = forceClose || isOpen;
+
+        mobileMenu.classList.toggle('hidden', shouldClose);
+        menuIconOpen.classList.toggle('hidden', !shouldClose);
+        menuIconClose.classList.toggle('hidden', shouldClose);
+        mobileMenuBtn.setAttribute('aria-expanded', String(!shouldClose));
+      }
+
+      mobileMenuBtn.addEventListener('click', () => toggleMenu());
+
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => toggleMenu(true));
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') toggleMenu(true);
+      });
+    }
   </script>
+
 </body>
 </html>
