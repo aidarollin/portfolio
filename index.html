@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aida Sofiah — UI/UX Designer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6D28D9',
+            'primary-light': '#7C3AED',
+            accent: '#A78BFA',
+            surface: '#F5F3FF',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.7s ease forwards',
+            'fade-up-delay': 'fadeUp 0.7s ease 0.2s forwards',
+            'fade-up-delay-2': 'fadeUp 0.7s ease 0.4s forwards',
+            'fade-up-delay-3': 'fadeUp 0.7s ease 0.6s forwards',
+            'blob': 'blob 8s infinite',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            blob: {
+              '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+              '33%': { transform: 'translate(20px, -20px) scale(1.05)' },
+              '66%': { transform: 'translate(-15px, 15px) scale(0.95)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    .opacity-0-init { opacity: 0; }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased">
+
+  <!-- ── Navigation ── -->
+  <header class="fixed top-0 inset-x-0 z-50">
+    <nav
+      class="bg-white/80 backdrop-blur-lg border-b border-violet-100/60 shadow-sm shadow-violet-50"
+      aria-label="Main navigation"
+    >
+      <div class="max-w-6xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between gap-6">
+
+        <!-- Logo -->
+        <a
+          href="#"
+          class="text-xl font-black tracking-tight text-gray-900 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+          aria-label="Aida Sofiah — home"
+        >
+          Aida<span class="text-primary">.</span>
+        </a>
+
+        <!-- Nav links (desktop) -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
+          <a href="#about"    class="hover:text-primary transition-colors duration-200">About</a>
+          <a href="#work"     class="hover:text-primary transition-colors duration-200">Work</a>
+          <a href="#contact"  class="hover:text-primary transition-colors duration-200">Contact</a>
+        </div>
+
+        <!-- Contact info -->
+        <div class="flex items-center gap-4 text-sm text-gray-500 shrink-0">
+          <a
+            href="mailto:aid12@gmail.com"
+            class="hidden sm:flex items-center gap-1.5 hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            aria-label="Email Aida"
+          >
+            <!-- Mail icon -->
+            <svg class="w-4 h-4 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M2.003 5.884 10 9.882l7.997-3.998A2 2 0 0 0 16 4H4a2 2 0 0 0-1.997 1.884Z"/>
+              <path d="m18 8.118-8 4-8-4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.118Z"/>
+            </svg>
+            aid12@gmail.com
+          </a>
+
+          <span class="hidden sm:block text-gray-200" aria-hidden="true">|</span>
+
+          <a
+            href="tel:0111111111"
+            class="flex items-center gap-1.5 hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            aria-label="Call Aida"
+          >
+            <!-- Phone icon -->
+            <svg class="w-4 h-4 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326 13.019 13.019 0 0 1 2 5V3.5Z" clip-rule="evenodd"/>
+            </svg>
+            0111-111-1111
+          </a>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- ── Hero Section ── -->
+  <main id="home">
+    <section
+      class="relative min-h-screen flex items-center overflow-hidden bg-white"
+      aria-labelledby="hero-heading"
+    >
+
+      <!-- Decorative background blobs -->
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+        <!-- Top-right blob -->
+        <div
+          class="animate-blob absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-violet-100 opacity-60 blur-3xl"
+        ></div>
+        <!-- Bottom-left blob -->
+        <div
+          class="animate-blob absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full bg-purple-100 opacity-50 blur-3xl"
+          style="animation-delay: 3s;"
+        ></div>
+        <!-- Center accent blob -->
+        <div
+          class="animate-blob absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-50 opacity-40 blur-3xl"
+          style="animation-delay: 6s;"
+        ></div>
+
+        <!-- Subtle grid overlay -->
+        <div
+          class="absolute inset-0"
+          style="background-image: radial-gradient(circle, #6D28D910 1px, transparent 1px); background-size: 32px 32px;"
+        ></div>
+      </div>
+
+      <!-- Content -->
+      <div class="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 pt-32 pb-20 w-full">
+        <div class="max-w-3xl">
+
+          <!-- Eyebrow tag -->
+          <div
+            class="animate-fade-up opacity-0-init inline-flex items-center gap-2 bg-surface border border-violet-200 text-primary text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-8"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" aria-hidden="true"></span>
+            UI/UX Designer &amp; CS Student · Graduating July 2026
+          </div>
+
+          <!-- Main heading -->
+          <h1
+            id="hero-heading"
+            class="animate-fade-up-delay opacity-0-init text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-gray-900 mb-6"
+          >
+            Aida Sofiah<br />
+            <span class="text-primary">Binti Ahmad</span><br />
+            Fikri
+          </h1>
+
+          <!-- Summary -->
+          <p
+            class="animate-fade-up-delay-2 opacity-0-init text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mb-10 font-light"
+          >
+            I bring a unique blend of core design theory and technical development skills —
+            proficient in bridging the gap between design and development using
+            <span class="text-gray-700 font-medium">Figma</span>,
+            <span class="text-gray-700 font-medium">HTML</span>,
+            <span class="text-gray-700 font-medium">CSS</span>, and
+            <span class="text-gray-700 font-medium">JavaScript</span>
+            within modern workflows.
+          </p>
+
+          <!-- CTAs -->
+          <div class="animate-fade-up-delay-3 opacity-0-init flex flex-wrap items-center gap-4">
+            <!-- Primary CTA -->
+            <a
+              href="#work"
+              class="group inline-flex items-center gap-2.5 bg-primary hover:bg-primary-light text-white font-semibold text-sm px-7 py-4 rounded-full shadow-lg shadow-violet-300/40 hover:shadow-violet-400/50 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+            >
+              View My Work
+              <!-- Arrow icon -->
+              <svg
+                class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+
+            <!-- Secondary CTA -->
+            <a
+              href="mailto:aid12@gmail.com"
+              class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-light border border-violet-200 hover:border-primary px-7 py-4 rounded-full hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+            >
+              Get In Touch
+            </a>
+          </div>
+
+          <!-- Social proof / skill pills -->
+          <div class="animate-fade-up-delay-3 opacity-0-init mt-14 flex flex-wrap gap-2">
+            <span class="text-xs text-gray-400 self-center mr-1 font-medium tracking-wide uppercase">Skilled in</span>
+            <span class="skill-pill">Figma</span>
+            <span class="skill-pill">User Research</span>
+            <span class="skill-pill">Prototyping</span>
+            <span class="skill-pill">HTML &amp; CSS</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">Accessibility</span>
+          </div>
+
+        </div>
+
+        <!-- Scroll hint -->
+        <div
+          class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-gray-300 text-[10px] font-medium tracking-widest uppercase"
+          aria-hidden="true"
+        >
+          <span>Scroll</span>
+          <svg class="w-4 h-4 animate-bounce" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+
+  <!-- Skill pill utility (Tailwind can't purge dynamic classes, so we define it here) -->
+  <style>
+    .skill-pill {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #6D28D9;
+      background-color: #F5F3FF;
+      border: 1px solid #DDD6FE;
+      border-radius: 9999px;
+      transition: background-color 0.15s, color 0.15s;
+    }
+    .skill-pill:hover {
+      background-color: #EDE9FE;
+      color: #5B21B6;
+    }
+    /* Ensure animations fire once load is complete */
+    body .opacity-0-init {
+      opacity: 0;
+    }
+  </style>
+
+</body>
+</html>
