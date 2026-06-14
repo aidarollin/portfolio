@@ -2,71 +2,115 @@
    styles.css
    Custom component styles for Aida Sofiah's portfolio.
 
-   Tailwind's CDN cannot detect class names that are assembled dynamically,
-   so any reusable component classes must be defined here rather than
-   composed purely from Tailwind utilities.
-
    Sections
    --------
-   1. Base / Reset helpers
-   2. Hero — animation init state
-   3. Pill components  (skill-pill, figma-tag)
+   1. Global scroll behaviour
+   2. Base / animation init state
+   3. Navigation — active link & mobile menu
+   4. Pill components  (skill-pill, figma-tag)
    ========================================================================== */
 
 
 /* --------------------------------------------------------------------------
-   1. Base / Reset helpers
+   1. Global scroll behaviour
    -------------------------------------------------------------------------- */
 
-/**
- * Elements that should start invisible and be revealed by the JS
- * IntersectionObserver in main.js.
- * The animation classes on the hero (animate-fade-up-*) handle their own
- * reveal via Tailwind keyframes; only the scroll-triggered .reveal-section
- * elements need this rule.
+html {
+  scroll-behavior: smooth;
+  /* Offset anchor scrolling so the fixed nav (64px) does not cover section
+     headings.  Add a little extra breathing room above. */
+  scroll-padding-top: 5rem; /* 80px */
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Base / animation init state
+   -------------------------------------------------------------------------- */
+
+/*
+ * Elements with .reveal-section start invisible; main.js drives them into
+ * view via an IntersectionObserver that applies the matching transition.
  */
-.opacity-0-init {
+.opacity-0-init,
+.reveal-section {
   opacity: 0;
 }
 
 
 /* --------------------------------------------------------------------------
-   2. Pill components
+   3. Navigation — active link & mobile menu
    -------------------------------------------------------------------------- */
 
-/**
- * .skill-pill
- * Used in the Hero skills row and the Work Experience "Platforms" row.
- * Light violet tint on a white/surface background.
+/* Highlighted nav link matching the visible section (toggled by main.js) */
+.nav-active {
+  color: #6D28D9; /* primary */
+  font-weight: 600;
+}
+
+/* Mobile nav drawer links */
+.mobile-nav-link {
+  display: block;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.9375rem; /* 15px */
+  font-weight: 500;
+  color: #374151;       /* gray-700  – 7.68:1 contrast on white ✓ */
+  border-radius: 0.5rem;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+.mobile-nav-link:hover {
+  color: #6D28D9;
+  background-color: #F5F3FF;
+}
+
+/* Contact links inside mobile drawer */
+.mobile-contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  color: #4B5563;       /* gray-600  – 5.74:1 on white ✓ */
+  transition: color 0.15s ease;
+}
+.mobile-contact-link:hover {
+  color: #6D28D9;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Pill components
+   -------------------------------------------------------------------------- */
+
+/*
+ * .skill-pill — Hero skills row and Work Experience "Platforms" row.
+ * Light violet tint on white / surface background.
+ * Color: primary (#6D28D9) on surface (#F5F3FF) → ~7.2:1 ✓
  */
 .skill-pill {
   display:          inline-block;
   padding:          0.25rem 0.75rem;
-  font-size:        0.75rem;    /* 12px */
+  font-size:        0.75rem;
   font-weight:      500;
-  color:            #6D28D9;   /* primary */
-  background-color: #F5F3FF;   /* surface */
+  color:            #6D28D9;
+  background-color: #F5F3FF;
   border:           1px solid #DDD6FE;
   border-radius:    9999px;
   transition:       background-color 0.15s ease, color 0.15s ease;
 }
-
 .skill-pill:hover {
   background-color: #EDE9FE;
   color:            #5B21B6;
 }
 
-/**
- * .figma-tag
- * Used inside the Design Portfolio dark section.
- * Semi-transparent violet on the dark slate background.
+/*
+ * .figma-tag — Design Portfolio dark section only.
+ * accent (#A78BFA) on slate-900 (#0F172A) → ~5.8:1 ✓
  */
 .figma-tag {
   display:          inline-block;
   padding:          0.2rem 0.65rem;
-  font-size:        0.7rem;    /* ~11px */
+  font-size:        0.7rem;
   font-weight:      600;
-  color:            #a78bfa;   /* accent */
+  color:            #a78bfa;
   background-color: rgba(109, 40, 217, 0.12);
   border:           1px solid rgba(109, 40, 217, 0.25);
   border-radius:    9999px;
