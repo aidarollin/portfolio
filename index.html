@@ -6,7 +6,52 @@
   <title>Aida Sofiah — UI/UX Designer</title>
   <meta name="description" content="Portfolio of Aida Sofiah Binti Ahmad Fikri — UI/UX Designer and Computer Science student graduating July 2026." />
   <!-- Tailwind config must load before the CDN so custom tokens are available -->
-  <script src="js/tailwind.config.js"></script>
+  <script>
+    tailwind = {
+      config: {
+        theme: {
+          extend: {
+
+            /* ── Brand colours ── */
+            colors: {
+              primary:         '#6D28D9',
+              'primary-light': '#7C3AED',
+              accent:          '#A78BFA',
+              surface:         '#F5F3FF',
+            },
+
+            /* ── Typography ── */
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+
+            /* ── Named animations ── */
+            animation: {
+              'fade-up':         'fadeUp 0.7s ease both',
+              'fade-up-delay':   'fadeUp 0.7s ease 0.2s both',
+              'fade-up-delay-2': 'fadeUp 0.7s ease 0.4s both',
+              'fade-up-delay-3': 'fadeUp 0.7s ease 0.6s both',
+              blob:              'blob 8s infinite',
+            },
+
+            /* ── Keyframe definitions ── */
+            keyframes: {
+              fadeUp: {
+                '0%':   { opacity: '0', transform: 'translateY(24px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              blob: {
+                '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                '33%':      { transform: 'translate(20px, -20px) scale(1.05)' },
+                '66%':      { transform: 'translate(-15px, 15px) scale(0.95)' },
+              },
+            },
+
+          },
+        },
+      },
+    };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Google Fonts -->
@@ -16,7 +61,82 @@
   />
 
   <!-- Custom component styles -->
-  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ==========================================================================
+       Custom component styles for Aida Sofiah's portfolio.
+       ========================================================================== */
+
+    /* 1. Global scroll behaviour */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem; /* 80px — offset for fixed nav */
+    }
+
+    /* 2. Scroll-reveal init state */
+    .reveal-section {
+      opacity: 0;
+    }
+
+    /* 3. Navigation — active link & mobile menu */
+    .nav-active {
+      color: #6D28D9;
+      font-weight: 600;
+    }
+
+    .mobile-nav-link {
+      display: block;
+      padding: 0.625rem 0.75rem;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: #374151;
+      border-radius: 0.5rem;
+      transition: color 0.15s ease, background-color 0.15s ease;
+    }
+    .mobile-nav-link:hover {
+      color: #6D28D9;
+      background-color: #F5F3FF;
+    }
+
+    .mobile-contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.875rem;
+      color: #4B5563;
+      transition: color 0.15s ease;
+    }
+    .mobile-contact-link:hover {
+      color: #6D28D9;
+    }
+
+    /* 4. Pill components */
+    .skill-pill {
+      display:          inline-block;
+      padding:          0.25rem 0.75rem;
+      font-size:        0.75rem;
+      font-weight:      500;
+      color:            #6D28D9;
+      background-color: #F5F3FF;
+      border:           1px solid #DDD6FE;
+      border-radius:    9999px;
+      transition:       background-color 0.15s ease, color 0.15s ease;
+    }
+    .skill-pill:hover {
+      background-color: #EDE9FE;
+      color:            #5B21B6;
+    }
+
+    .figma-tag {
+      display:          inline-block;
+      padding:          0.2rem 0.65rem;
+      font-size:        0.7rem;
+      font-weight:      600;
+      color:            #a78bfa;
+      background-color: rgba(109, 40, 217, 0.12);
+      border:           1px solid rgba(109, 40, 217, 0.25);
+      border-radius:    9999px;
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-900 font-sans antialiased">
 
@@ -1063,8 +1183,99 @@
   </footer>
 
 
-  <!-- Runtime JS (scroll-reveal + active nav) -->
-  <script src="js/main.js" defer></script>
+  <!-- Runtime JS -->
+  <script>
+    /* ==========================================================================
+       Runtime behaviour for Aida Sofiah's portfolio.
+
+       1. Scroll-reveal   — fades + slides up .reveal-section elements as they
+                            enter the viewport.
+       2. Active nav link — highlights the link matching the visible section.
+       3. Mobile menu     — toggles the hamburger drawer on small screens.
+       ========================================================================== */
+
+
+    /* --------------------------------------------------------------------------
+       1. Scroll-reveal
+       -------------------------------------------------------------------------- */
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          entry.target.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+          entry.target.style.opacity    = '1';
+          entry.target.style.transform  = 'translateY(0)';
+
+          revealObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll('.reveal-section').forEach((el) => {
+      revealObserver.observe(el);
+    });
+
+
+    /* --------------------------------------------------------------------------
+       2. Active nav link
+       -------------------------------------------------------------------------- */
+
+    const sections = document.querySelectorAll('section[id], main[id]');
+    const navLinks  = document.querySelectorAll('nav a[href^="#"]');
+
+    const navObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const id = entry.target.getAttribute('id');
+
+          navLinks.forEach((link) => {
+            link.classList.toggle('nav-active', link.getAttribute('href') === `#${id}`);
+          });
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    );
+
+    sections.forEach((section) => navObserver.observe(section));
+
+
+    /* --------------------------------------------------------------------------
+       3. Mobile menu
+       -------------------------------------------------------------------------- */
+
+    const mobileMenuBtn  = document.getElementById('mobile-menu-btn');
+    const mobileMenu     = document.getElementById('mobile-menu');
+    const menuIconOpen   = document.getElementById('menu-icon-open');
+    const menuIconClose  = document.getElementById('menu-icon-close');
+
+    if (mobileMenuBtn && mobileMenu) {
+
+      function toggleMenu(forceClose = false) {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        const shouldClose = forceClose || isOpen;
+
+        mobileMenu.classList.toggle('hidden', shouldClose);
+        menuIconOpen.classList.toggle('hidden', !shouldClose);
+        menuIconClose.classList.toggle('hidden', shouldClose);
+        mobileMenuBtn.setAttribute('aria-expanded', String(!shouldClose));
+      }
+
+      mobileMenuBtn.addEventListener('click', () => toggleMenu());
+
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => toggleMenu(true));
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') toggleMenu(true);
+      });
+    }
+  </script>
 
 </body>
 </html>
