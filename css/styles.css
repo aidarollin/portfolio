@@ -31,7 +31,6 @@ html {
  * Elements with .reveal-section start invisible; main.js drives them into
  * view via an IntersectionObserver that applies the matching transition.
  */
-.opacity-0-init,
 .reveal-section {
   opacity: 0;
 }
