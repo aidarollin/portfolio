@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aida Sofiah</title>
   <meta name="description" content="Portfolio of Aida Sofiah Binti Ahmad Fikri — UI/UX Designer and Computer Science student graduating July 2026." />
-  <!-- Tailwind config must load before the CDN so custom tokens are available -->
   <script>
     tailwind = {
       config: {
@@ -54,13 +53,11 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Custom component styles -->
   <style>
     /* ==========================================================================
        Custom component styles for Aida Sofiah's portfolio.
@@ -140,7 +137,6 @@
 </head>
 <body class="bg-white text-gray-900 font-sans antialiased">
 
-  <!-- ── Navigation ── -->
   <header class="fixed top-0 inset-x-0 z-50">
     <nav
       class="bg-white/90 backdrop-blur-lg border-b border-violet-100/60 shadow-sm shadow-violet-50"
@@ -148,29 +144,26 @@
     >
       <div class="max-w-6xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
 
-        <!-- Logo -->
         <a
           href="#home"
-          class="text-xl font-black tracking-tight text-gray-900 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+          class="text-xl font-black tracking-tight text-gray-900 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700 rounded"
           aria-label="Aida Sofiah — back to top"
         >
-          Aida<span class="text-primary">.</span>
+          Aida<span class="text-purple-700">.</span>
         </a>
 
-        <!-- Nav links (desktop only) -->
         <div class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-600">
-          <a href="#about"      class="hover:text-primary transition-colors duration-200">About</a>
-          <a href="#experience" class="hover:text-primary transition-colors duration-200">Experience</a>
-          <a href="#work"       class="hover:text-primary transition-colors duration-200">Projects</a>
-          <a href="#design"     class="hover:text-primary transition-colors duration-200">Design</a>
-          <a href="#contact"    class="hover:text-primary transition-colors duration-200">Contact</a>
+          <a href="#about"      class="hover:text-purple-700 transition-colors duration-200">About</a>
+          <a href="#experience" class="hover:text-purple-700 transition-colors duration-200">Experience</a>
+          <a href="#work"       class="hover:text-purple-700 transition-colors duration-200">Projects</a>
+          <a href="#design"     class="hover:text-purple-700 transition-colors duration-200">Design</a>
+          <a href="#contact"    class="hover:text-purple-700 transition-colors duration-200">Contact</a>
         </div>
 
-        <!-- Desktop contact info -->
         <div class="hidden sm:flex items-center gap-4 text-sm text-gray-600 shrink-0">
           <a
             href="mailto:aidaasofiah@gmail.com"
-            class="hidden lg:flex items-center gap-1.5 hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            class="hidden lg:flex items-center gap-1.5 hover:text-purple-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700 rounded"
             aria-label="Email Aida"
           >
             <svg class="w-4 h-4 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -181,7 +174,7 @@
           </a>
           <span class="hidden lg:block text-gray-200" aria-hidden="true">|</span>
           <a
-            class="flex items-center gap-1.5 hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            class="flex items-center gap-1.5 hover:text-purple-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700 rounded"
             aria-label="Call Aida"
           >
             <svg class="w-4 h-4 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -191,10 +184,9 @@
           </a>
         </div>
 
-        <!-- Hamburger button (mobile only) -->
         <button
           id="mobile-menu-btn"
-          class="md:hidden flex items-center justify-center w-9 h-9 rounded-lg text-gray-700 hover:text-primary hover:bg-violet-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          class="md:hidden flex items-center justify-center w-9 h-9 rounded-lg text-gray-700 hover:text-purple-700 hover:bg-violet-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700"
           aria-label="Open navigation menu"
           aria-expanded="false"
           aria-controls="mobile-menu"
@@ -210,7 +202,6 @@
       </div>
     </nav>
 
-    <!-- Mobile menu drawer -->
     <div
       id="mobile-menu"
       class="hidden md:hidden bg-white/95 backdrop-blur-lg border-b border-violet-100/60 shadow-lg"
@@ -254,59 +245,49 @@
   </header>
 
 
-  <!-- ── Hero Section ── -->
   <main id="home">
     <section
       class="relative min-h-screen flex items-center overflow-hidden bg-white"
       aria-labelledby="hero-heading"
     >
 
-      <!-- Decorative background blobs -->
       <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
-        <!-- Top-right blob -->
         <div
           class="animate-blob absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-violet-100 opacity-60 blur-3xl"
         ></div>
-        <!-- Bottom-left blob -->
         <div
           class="animate-blob absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full bg-purple-100 opacity-50 blur-3xl"
           style="animation-delay: 3s;"
         ></div>
-        <!-- Center accent blob -->
         <div
           class="animate-blob absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-50 opacity-40 blur-3xl"
           style="animation-delay: 6s;"
         ></div>
 
-        <!-- Subtle grid overlay -->
         <div
           class="absolute inset-0"
           style="background-image: radial-gradient(circle, #6D28D910 1px, transparent 1px); background-size: 32px 32px;"
         ></div>
       </div>
 
-      <!-- Content -->
       <div class="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 pt-32 pb-20 w-full">
         <div class="max-w-3xl">
 
-          <!-- Eyebrow tag -->
           <div
-            class="animate-fade-up opacity-0-init inline-flex items-center gap-2 bg-surface border border-violet-200 text-primary text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-8"
+            class="animate-fade-up opacity-0-init inline-flex items-center gap-2 bg-surface border border-violet-200 text-purple-700 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-8"
           >
-            <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" aria-hidden="true"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-purple-700 animate-pulse" aria-hidden="true"></span>
             UI/UX Designer &amp; CS Student - Graduating July 2026
           </div>
 
-          <!-- Main heading -->
           <h1
             id="hero-heading"
             class="animate-fade-up-delay opacity-0-init text-4xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-gray-900 mb-6"
           >
             Aida<br />
-            <span class="text-primary">Sofiah</span><br />
+            <span class="text-purple-700">Sofiah</span><br />
           </h1>
 
-          <!-- Summary -->
           <p
             class="animate-fade-up-delay-2 opacity-0-init text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mb-10 font-light"
           >
@@ -319,12 +300,11 @@
             within modern workflows.
           </p>
 
-          <!-- CTAs -->
           <div class="animate-fade-up-delay-3 opacity-0-init flex flex-wrap items-center gap-4">
-            <!-- Primary CTA -->
+            
             <a
               href="#work"
-              class="group inline-flex items-center gap-2.5 bg-primary hover:bg-white text-white hover:text-primary border border-transparent hover:border-primary font-semibold text-sm px-7 py-4 rounded-full shadow-lg shadow-violet-300/40 hover:shadow-violet-400/50 hover:-translate-y-0.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+              class="group inline-flex items-center gap-2.5 bg-purple-700 text-white hover:bg-purple-600 border-2 border-purple-700 hover:border-purple-600 font-semibold text-sm px-7 py-4 rounded-full shadow-lg shadow-violet-300/40 hover:shadow-violet-400/50 hover:-translate-y-0.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-purple-700"
             >
             View My Work
             <svg
@@ -333,20 +313,18 @@
               fill="currentColor"
               aria-hidden="true"
             >
-    <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/>
-  </svg>
-</a>
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/>
+            </svg>
+            </a>
 
-            <!-- Secondary CTA -->
             <a
               href="mailto:aidaasofiah@gmail.com"
-              class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-light border border-violet-200 hover:border-primary px-7 py-4 rounded-full hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+              class="inline-flex items-center gap-2 text-sm font-semibold text-purple-700 hover:text-purple-600 border border-violet-200 hover:border-purple-700 px-7 py-4 rounded-full hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-purple-700"
             >
               Get In Touch
             </a>
           </div>
 
-          <!-- Social proof / skill pills -->
           <div class="animate-fade-up-delay-3 opacity-0-init mt-14 flex flex-wrap gap-2">
             <span class="text-xs text-gray-500 self-center mr-1 font-medium tracking-wide uppercase">Skilled in</span>
             <span class="skill-pill">Figma</span>
@@ -361,7 +339,6 @@
       </div>
     </section>
 
-    <!-- ── Work Experience ── -->
     <section
       id="experience"
       class="py-28 bg-slate-50/70"
@@ -369,11 +346,10 @@
     >
       <div class="max-w-4xl mx-auto px-6 lg:px-8">
 
-        <!-- Section header -->
         <div class="mb-16 reveal-section" style="opacity:0;transform:translateY(20px);">
           <div class="flex items-center gap-3 mb-5">
-            <span class="w-8 h-px bg-primary" aria-hidden="true"></span>
-            <span class="text-xs font-bold tracking-widest uppercase text-primary">Experience</span>
+            <span class="w-8 h-px bg-purple-700" aria-hidden="true"></span>
+            <span class="text-xs font-bold tracking-widest uppercase text-purple-700">Experience</span>
           </div>
           <h2
             id="experience-heading"
@@ -382,24 +358,22 @@
           <p class="mt-3 text-gray-500 text-lg font-light">Where design meets real-world impact.</p>
         </div>
 
-        <!-- Entry 1: Pandai Education -->
         <article
           class="reveal-section bg-white rounded-2xl border border-gray-100 shadow-lg shadow-gray-100/60 p-8 sm:p-10 mb-8 hover:shadow-xl hover:shadow-violet-100/50 transition-shadow duration-300"
           style="opacity:0;transform:translateY(24px);transition-delay:0.08s;"
           aria-label="Pandai Education internship"
         >
-          <!-- Card header -->
           <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
             <div>
               <div class="flex flex-wrap items-center gap-2 mb-3">
-                <span class="text-[11px] font-bold tracking-wide uppercase bg-violet-50 text-primary border border-violet-200 px-3 py-1 rounded-full">EdTech</span>
+                <span class="text-[11px] font-bold tracking-wide uppercase bg-violet-50 text-purple-700 border border-violet-200 px-3 py-1 rounded-full">EdTech</span>
                 <span class="text-[11px] font-bold tracking-wide uppercase bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full">Internship</span>
               </div>
               <h3 class="text-2xl sm:text-3xl font-black text-gray-900 leading-tight">UI/UX Design Intern</h3>
-              <p class="mt-1 text-lg font-semibold text-primary">Pandai Education Sdn. Bhd.</p>
+              <p class="mt-1 text-lg font-semibold text-purple-700">Pandai Education Sdn. Bhd.</p>
             </div>
             <div class="shrink-0 text-right">
-              <div class="inline-flex items-center gap-2 bg-surface border border-violet-200 text-primary text-sm font-semibold px-4 py-2.5 rounded-full">
+              <div class="inline-flex items-center gap-2 bg-surface border border-violet-200 text-purple-700 text-sm font-semibold px-4 py-2.5 rounded-full">
                 <svg class="w-4 h-4 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clip-rule="evenodd"/>
                 </svg>
@@ -411,39 +385,37 @@
 
           <div class="border-t border-gray-100 mb-7" aria-hidden="true"></div>
 
-          <!-- Bullet points -->
           <ul class="space-y-4 mb-8" role="list">
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-purple-700 shrink-0" aria-hidden="true"></span>
               <span class="text-gray-600 leading-relaxed">Assisted in designing mobile and web interfaces using Figma for an EdTech platform serving over <strong class="text-gray-800 font-semibold">1 million students</strong>.</span>
             </li>
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-purple-700 shrink-0" aria-hidden="true"></span>
               <span class="text-gray-600 leading-relaxed">Revamped key user flows including <strong class="text-gray-800 font-semibold">quiz-taking</strong>, <strong class="text-gray-800 font-semibold">progress tracking</strong>, and <strong class="text-gray-800 font-semibold">onboarding experiences</strong>.</span>
             </li>
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-purple-700 shrink-0" aria-hidden="true"></span>
               <span class="text-gray-600 leading-relaxed">Created wireframes, prototypes, and <strong class="text-gray-800 font-semibold">high-fidelity UI mockups</strong> across multiple product surfaces.</span>
             </li>
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-purple-700 shrink-0" aria-hidden="true"></span>
               <span class="text-gray-600 leading-relaxed">Contributed to maintaining and expanding Pandai's <strong class="text-gray-800 font-semibold">design system</strong> — colour tokens, typography, and reusable components.</span>
             </li>
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-purple-700 shrink-0" aria-hidden="true"></span>
               <span class="text-gray-600 leading-relaxed">Supported UX research through <strong class="text-gray-800 font-semibold">user interviews</strong> and <strong class="text-gray-800 font-semibold">competitor analysis</strong> to inform design decisions.</span>
             </li>
           </ul>
 
-          <!-- Impact bar -->
           <div class="flex flex-wrap items-center gap-6 p-5 bg-surface rounded-xl border border-violet-100 mb-8">
             <div class="flex items-baseline gap-1.5">
-              <span class="text-3xl font-black text-primary">1M+</span>
+              <span class="text-3xl font-black text-purple-700">1M+</span>
               <span class="text-sm text-gray-500 font-medium">students reached</span>
             </div>
             <div class="w-px h-8 bg-violet-200 hidden sm:block" aria-hidden="true"></div>
             <div class="flex items-baseline gap-1.5">
-              <span class="text-3xl font-black text-primary">3+</span>
+              <span class="text-3xl font-black text-purple-700">3+</span>
               <span class="text-sm text-gray-500 font-medium">core flows redesigned</span>
             </div>
             <div class="w-px h-8 bg-violet-200 hidden sm:block" aria-hidden="true"></div>
@@ -459,12 +431,11 @@
             </div>
           </div>
 
-          <!-- CTA button -->
           <a
             href="https://www.figma.com/design/TVrvylo8OHzaJ73PKlNuqc/Pandai-Teacher---Class-Insight--Copy-?node-id=4004-785&t=MdLOOeMwWayfSyYf-1"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2.5 bg-primary hover:bg-white text-white hover:text-primary text-sm font-semibold px-6 py-3 rounded-full shadow-md shadow-violet-300/40 hover:shadow-violet-400/50 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            class="inline-flex items-center gap-2.5 bg-purple-700 text-white border-2 border-purple-700 hover:bg-purple-600 hover:border-purple-600 text-sm font-semibold px-6 py-3 rounded-full shadow-md shadow-violet-300/40 hover:shadow-violet-400/50 hover:-translate-y-0.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700 focus-visible:ring-offset-2"
           >
             <svg class="w-4 h-4 shrink-0" viewBox="0 0 38 57" aria-hidden="true">
               <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/>
@@ -481,13 +452,11 @@
           </a>
         </article>
 
-        <!-- Entry 2: Klynn Global -->
         <article
           class="reveal-section bg-white rounded-2xl border border-gray-100 shadow-lg shadow-gray-100/60 p-8 sm:p-10 hover:shadow-xl hover:shadow-violet-100/50 transition-shadow duration-300"
           style="opacity:0;transform:translateY(24px);transition-delay:0.18s;"
           aria-label="Klynn Global freelance"
         >
-          <!-- Card header -->
           <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
             <div>
               <div class="flex flex-wrap items-center gap-2 mb-3">
@@ -495,10 +464,10 @@
                 <span class="text-[11px] font-bold tracking-wide uppercase bg-sky-50 text-sky-700 border border-sky-200 px-3 py-1 rounded-full">Remote</span>
               </div>
               <h3 class="text-2xl sm:text-3xl font-black text-gray-900 leading-tight">Freelance UI Designer</h3>
-              <p class="mt-1 text-lg font-semibold text-primary">Klynn Global</p>
+              <p class="mt-1 text-lg font-semibold text-purple-700">Klynn Global</p>
             </div>
             <div class="shrink-0 text-right">
-              <div class="inline-flex items-center gap-2 bg-surface border border-violet-200 text-primary text-sm font-semibold px-4 py-2.5 rounded-full">
+              <div class="inline-flex items-center gap-2 bg-surface border border-violet-200 text-purple-700 text-sm font-semibold px-4 py-2.5 rounded-full">
                 <svg class="w-4 h-4 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clip-rule="evenodd"/>
                 </svg>
@@ -510,31 +479,29 @@
 
           <div class="border-t border-gray-100 mb-7" aria-hidden="true"></div>
 
-          <!-- Bullet points -->
           <ul class="space-y-4 mb-8" role="list">
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-purple-700 shrink-0" aria-hidden="true"></span>
               <span class="text-gray-600 leading-relaxed">Designed high-fidelity mobile screens using Figma, focusing on <strong class="text-gray-800 font-semibold">layout</strong>, <strong class="text-gray-800 font-semibold">typography</strong>, and <strong class="text-gray-800 font-semibold">visual hierarchy</strong>.</span>
             </li>
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-purple-700 shrink-0" aria-hidden="true"></span>
               <span class="text-gray-600 leading-relaxed">Developed UI components tailored for <strong class="text-gray-800 font-semibold">iOS and Android</strong> platforms with responsiveness and scalability in mind.</span>
             </li>
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-purple-700 shrink-0" aria-hidden="true"></span>
               <span class="text-gray-600 leading-relaxed">Collaborated with clients to translate ideas and wireframes into clean, <strong class="text-gray-800 font-semibold">production-ready visuals</strong>.</span>
             </li>
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-purple-700 shrink-0" aria-hidden="true"></span>
               <span class="text-gray-600 leading-relaxed">Ensured consistency in <strong class="text-gray-800 font-semibold">colour, spacing, and branding</strong> across all screens and user flows.</span>
             </li>
             <li class="flex items-start gap-3.5">
-              <span class="mt-[7px] w-2 h-2 rounded-sm bg-primary shrink-0" aria-hidden="true"></span>
+              <span class="mt-[7px] w-2 h-2 rounded-sm bg-purple-700 shrink-0" aria-hidden="true"></span>
               <span class="text-gray-600 leading-relaxed">Delivered structured design assets and specs, supporting smooth <strong class="text-gray-800 font-semibold">developer handoffs</strong> and accurate implementation.</span>
             </li>
           </ul>
 
-          <!-- Platform tags -->
           <div class="flex flex-wrap gap-2 mb-8">
             <span class="text-xs text-gray-500 self-center font-medium mr-1">Platforms</span>
             <span class="skill-pill">iOS</span>
@@ -543,12 +510,11 @@
             <span class="skill-pill">Design Handoff</span>
           </div>
 
-          <!-- CTA button -->
           <a
             href="https://www.figma.com/design/0oRHFLorp8OkZMchWYv9k5/Klynn-Project?node-id=2-17313&t=67cWsJ4OuTSWsast-1"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2.5 bg-primary hover:bg-white text-white hover:text-primary text-sm font-semibold px-6 py-3 rounded-full shadow-md shadow-violet-300/40 hover:shadow-violet-400/50 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            class="inline-flex items-center gap-2.5 bg-purple-700 text-white border-2 border-purple-700 hover:bg-purple-600 hover:border-purple-600 text-sm font-semibold px-6 py-3 rounded-full shadow-md shadow-violet-300/40 hover:shadow-violet-400/50 hover:-translate-y-0.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700 focus-visible:ring-offset-2"
           >
             <svg class="w-4 h-4 shrink-0" viewBox="0 0 38 57" aria-hidden="true">
               <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/>
@@ -569,7 +535,6 @@
     </section>
 
 
-    <!-- ── Technical Projects ── -->
     <section
       id="work"
       class="py-28 bg-white"
@@ -577,11 +542,10 @@
     >
       <div class="max-w-6xl mx-auto px-6 lg:px-8">
 
-        <!-- Section header -->
         <div class="mb-16 reveal-section" style="opacity:0;transform:translateY(20px);">
           <div class="flex items-center gap-3 mb-5">
-            <span class="w-8 h-px bg-primary" aria-hidden="true"></span>
-            <span class="text-xs font-bold tracking-widest uppercase text-primary">Projects</span>
+            <span class="w-8 h-px bg-purple-700" aria-hidden="true"></span>
+            <span class="text-xs font-bold tracking-widest uppercase text-purple-700">Projects</span>
           </div>
           <h2
             id="projects-heading"
@@ -590,24 +554,20 @@
           <p class="mt-3 text-gray-500 text-lg font-light">Designed and built from the ground up.</p>
         </div>
 
-        <!-- Project grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-          <!-- ── Card 1: Local Cafe Website ── -->
           <div
             class="group relative flex flex-col bg-white rounded-2xl border border-gray-100 shadow-md shadow-gray-100/80 overflow-hidden hover:shadow-xl hover:shadow-violet-100/60 hover:-translate-y-1 transition-all duration-300 reveal-section"
             style="opacity:0;transform:translateY(24px);transition-delay:0.05s;"
           >
-            <!-- Accent top bar -->
-            <div class="h-1 bg-gradient-to-r from-primary via-accent to-indigo-400 shrink-0"></div>
+            <div class="h-1 bg-gradient-to-r from-purple-700 via-accent to-indigo-400 shrink-0"></div>
 
             <div class="flex flex-col flex-1 p-8">
-              <!-- Card top row: number + GitHub icon -->
               <div class="flex items-start justify-between mb-5">
                 <span class="text-6xl font-black text-gray-100 leading-none select-none" aria-hidden="true">01</span>
                 <a
                   href="#"
-                  class="text-gray-300 hover:text-primary transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  class="text-gray-300 hover:text-purple-700 transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700"
                   aria-label="View Local Cafe Website on GitHub"
                 >
                   <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -616,7 +576,7 @@
                 </a>
               </div>
 
-              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-200">
+              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-700 transition-colors duration-200">
                 Local Cafe Website
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed flex-1 mb-6">
@@ -625,7 +585,6 @@
                 Firebase for the backend, and deployed via Cloudflare.
               </p>
 
-              <!-- Tech pills -->
               <div class="flex flex-wrap gap-2 mb-7">
                 <span class="skill-pill">HTML/CSS</span>
                 <span class="skill-pill">JavaScript</span>
@@ -634,11 +593,10 @@
                 <span class="skill-pill">Claude Code</span>
               </div>
 
-              <!-- Action buttons -->
               <div class="flex items-center gap-3 mt-auto">
                 <a
                   href="https://molieskafe.aidaasofiah.workers.dev/"
-                  class="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-white text-white hover:text-primary text-sm font-semibold py-2.5 px-5 rounded-full shadow-sm shadow-violet-300/40 hover:shadow-violet-400/50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  class="flex-1 inline-flex items-center justify-center gap-2 bg-purple-700 text-white border-2 border-purple-700 hover:bg-purple-600 hover:border-purple-600 text-sm font-semibold py-2.5 px-5 rounded-full shadow-sm shadow-violet-300/40 hover:shadow-violet-400/50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700 focus-visible:ring-offset-2"
                 >
                   View Live Project
                   <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -649,19 +607,18 @@
             </div>
           </div>
 
-          <!-- ── Card 2: Car Rental Website ── -->
           <div
             class="group relative flex flex-col bg-white rounded-2xl border border-gray-100 shadow-md shadow-gray-100/80 overflow-hidden hover:shadow-xl hover:shadow-violet-100/60 hover:-translate-y-1 transition-all duration-300 reveal-section"
             style="opacity:0;transform:translateY(24px);transition-delay:0.15s;"
           >
-            <div class="h-1 bg-gradient-to-r from-indigo-500 via-primary to-accent shrink-0"></div>
+            <div class="h-1 bg-gradient-to-r from-indigo-500 via-purple-700 to-accent shrink-0"></div>
 
             <div class="flex flex-col flex-1 p-8">
               <div class="flex items-start justify-between mb-5">
                 <span class="text-6xl font-black text-gray-100 leading-none select-none" aria-hidden="true">02</span>
                 <a
                   href="#"
-                  class="text-gray-300 hover:text-primary transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  class="text-gray-300 hover:text-purple-700 transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700"
                   aria-label="View Car Rental Website on GitHub"
                 >
                   <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -670,7 +627,7 @@
                 </a>
               </div>
 
-              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-200">
+              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-700 transition-colors duration-200">
                 Car Rental Website
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed flex-1 mb-6">
@@ -688,19 +645,18 @@
             </div>
           </div>
 
-          <!-- ── Card 3: Photobooth ── -->
           <div
             class="group relative flex flex-col bg-white rounded-2xl border border-gray-100 shadow-md shadow-gray-100/80 overflow-hidden hover:shadow-xl hover:shadow-violet-100/60 hover:-translate-y-1 transition-all duration-300 reveal-section"
             style="opacity:0;transform:translateY(24px);transition-delay:0.05s;"
           >
-            <div class="h-1 bg-gradient-to-r from-violet-400 via-purple-500 to-primary shrink-0"></div>
+            <div class="h-1 bg-gradient-to-r from-violet-400 via-purple-500 to-purple-700 shrink-0"></div>
 
             <div class="flex flex-col flex-1 p-8">
               <div class="flex items-start justify-between mb-5">
                 <span class="text-6xl font-black text-gray-100 leading-none select-none" aria-hidden="true">03</span>
                 <a
                   href="#"
-                  class="text-gray-300 hover:text-primary transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  class="text-gray-300 hover:text-purple-700 transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700"
                   aria-label="View Photobooth on GitHub"
                 >
                   <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -709,7 +665,7 @@
                 </a>
               </div>
 
-              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-200">
+              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-700 transition-colors duration-200">
                 Photobooth
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed flex-1 mb-6">
@@ -726,7 +682,7 @@
               <div class="flex items-center gap-3 mt-auto">
                 <a
                   href="https://aidarollin.github.io/photobooth-web-app/"
-                  class="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-white text-white hover:text-primary text-sm font-semibold py-2.5 px-5 rounded-full shadow-sm shadow-violet-300/40 hover:shadow-violet-400/50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  class="flex-1 inline-flex items-center justify-center gap-2 bg-purple-700 text-white border-2 border-purple-700 hover:bg-purple-600 hover:border-purple-600 text-sm font-semibold py-2.5 px-5 rounded-full shadow-sm shadow-violet-300/40 hover:shadow-violet-400/50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700 focus-visible:ring-offset-2"
                 >
                   View Live Project
                   <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -737,19 +693,18 @@
             </div>
           </div>
 
-          <!-- ── Card 4: Business Intelligence System ── -->
           <div
             class="group relative flex flex-col bg-white rounded-2xl border border-gray-100 shadow-md shadow-gray-100/80 overflow-hidden hover:shadow-xl hover:shadow-violet-100/60 hover:-translate-y-1 transition-all duration-300 reveal-section"
             style="opacity:0;transform:translateY(24px);transition-delay:0.15s;"
           >
-            <div class="h-1 bg-gradient-to-r from-primary via-violet-400 to-purple-400 shrink-0"></div>
+            <div class="h-1 bg-gradient-to-r from-purple-700 via-violet-400 to-purple-400 shrink-0"></div>
 
             <div class="flex flex-col flex-1 p-8">
               <div class="flex items-start justify-between mb-5">
                 <span class="text-6xl font-black text-gray-100 leading-none select-none" aria-hidden="true">04</span>
                 <a
                   href="#"
-                  class="text-gray-300 hover:text-primary transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  class="text-gray-300 hover:text-purple-700 transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700"
                   aria-label="View Business Intelligence System on GitHub"
                 >
                   <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -758,7 +713,7 @@
                 </a>
               </div>
 
-              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-200">
+              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-700 transition-colors duration-200">
                 Business Intelligence System
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed flex-1 mb-6">
@@ -777,7 +732,7 @@
               <div class="flex items-center gap-3 mt-auto">
                 <a
                   href="#"
-                  class="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-white text-white hover:text-primary text-sm font-semibold py-2.5 px-5 rounded-full shadow-sm shadow-violet-300/40 hover:shadow-violet-400/50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  class="flex-1 inline-flex items-center justify-center gap-2 bg-purple-700 text-white border-2 border-purple-700 hover:bg-purple-600 hover:border-purple-600 text-sm font-semibold py-2.5 px-5 rounded-full shadow-sm shadow-violet-300/40 hover:shadow-violet-400/50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700 focus-visible:ring-offset-2"
                 >
                   View Live Project
                   <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -788,35 +743,263 @@
             </div>
           </div>
 
-        </div><!-- /grid -->
-      </div>
+        </div></div>
+    </section>
+
+
+    <section
+      id="design"
+      class="py-28 bg-slate-900"
+      aria-labelledby="design-heading"
+    >
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+
+        <div class="mb-16 reveal-section" style="opacity:0;transform:translateY(20px);">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-8 h-px bg-accent" aria-hidden="true"></span>
+            <span class="text-xs font-bold tracking-widest uppercase text-accent">Design Work</span>
+          </div>
+          <h2
+            id="design-heading"
+            class="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight"
+          >Design Portfolio</h2>
+          <p class="text-2xl font-light text-violet-300 mt-1">Wireframes &amp; Prototypes</p>
+          <p class="mt-5 text-slate-400 text-base leading-relaxed max-w-2xl">
+            A dedicated space for the visual design work behind the products — from
+            early wireframes and user flows to high-fidelity Figma prototypes.
+            Embed links are placeholder; real prototypes are coming soon.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+          <div class="flex flex-col reveal-section" style="opacity:0;transform:translateY(24px);transition-delay:0.05s;">
+            <div class="group rounded-xl overflow-hidden border border-slate-700/50 shadow-2xl hover:border-violet-500/40 hover:shadow-violet-900/40 transition-all duration-300">
+              <div class="bg-slate-800 px-4 py-2.5 flex items-center gap-3 border-b border-slate-700/60">
+                <div class="flex items-center gap-1.5 shrink-0">
+                  <span class="w-3 h-3 rounded-full bg-red-400/60"></span>
+                  <span class="w-3 h-3 rounded-full bg-yellow-400/60"></span>
+                  <span class="w-3 h-3 rounded-full bg-green-400/60"></span>
+                </div>
+                <div class="flex-1 flex items-center gap-2 bg-slate-700/50 rounded-md px-3 py-1 min-w-0">
+                  <svg class="w-3 h-3 text-slate-500 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-[11px] text-slate-400 font-mono truncate">figma.com/proto/car-rental-website</span>
+                </div>
+                <svg class="w-4 h-4 shrink-0 opacity-50" viewBox="0 0 38 57" aria-hidden="true">
+                  <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/>
+                  <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/>
+                  <path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/>
+                  <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/>
+                  <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/>
+                </svg>
+              </div>
+              <div class="relative bg-slate-800 overflow-hidden" style="aspect-ratio:4/3;">
+                <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center px-6">
+                  <div class="w-11 h-11 rounded-xl border border-slate-600 bg-slate-700/50 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M1 5.25A2.25 2.25 0 0 1 3.25 3h13.5A2.25 2.25 0 0 1 19 5.25v9.5A2.25 2.25 0 0 1 16.75 17H3.25A2.25 2.25 0 0 1 1 14.75v-9.5Zm1.5 5.81v3.69c0 .414.336.75.75.75h13.5a.75.75 0 0 0 .75-.75v-2.69l-2.22-2.219a.75.75 0 0 0-1.06 0l-1.91 1.909.47.47a.75.75 0 1 1-1.06 1.06L6.53 8.091a.75.75 0 0 0-1.06 0l-2.97 2.97ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd"/>
+                    </svg>
+                  </div>
+                  <p class="text-slate-500 text-xs font-medium">Add Figma screenshot</p>
+                  <p class="text-slate-600 text-[10px]">Change src="#" to your image path</p>
+                </div>
+                <img
+                  src="#"
+                  alt="Car Rental Website — Figma prototype screenshot"
+                  class="absolute inset-0 w-full h-full object-cover z-10"
+                  onerror="this.style.display='none'"
+                />
+              </div>
+            </div>
+            <div class="mt-5 px-1">
+              <div class="flex items-center justify-between gap-3 mb-2">
+                <h3 class="text-white font-bold text-base leading-snug">Car Rental Website</h3>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-violet-400 bg-violet-400/10 border border-violet-400/20 px-2.5 py-1 rounded-full shrink-0">Prototype</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Full interactive Figma prototype of the car rental web app — covering
+                the booking flow, vehicle listing, and checkout experience.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="figma-tag">Figma</span>
+                <span class="figma-tag">UI Design</span>
+                <span class="figma-tag">Prototype</span>
+                <span class="figma-tag">Web</span>
+              </div>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-violet-300 hover:text-white bg-violet-400/5 hover:bg-violet-400/15 border border-violet-400/20 hover:border-violet-400/50 px-4 py-2 rounded-full transition-all duration-200"
+              >
+                <svg class="w-3 h-3" viewBox="0 0 38 57" aria-hidden="true"><path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/><path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/><path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/></svg>
+                Open in Figma
+                <svg class="w-3 h-3 opacity-60" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.194a.75.75 0 0 0-.053 1.06Z" clip-rule="evenodd"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="flex flex-col reveal-section" style="opacity:0;transform:translateY(24px);transition-delay:0.15s;">
+            <div class="group rounded-xl overflow-hidden border border-slate-700/50 shadow-2xl hover:border-violet-500/40 hover:shadow-violet-900/40 transition-all duration-300">
+              <div class="bg-slate-800 px-4 py-2.5 flex items-center gap-3 border-b border-slate-700/60">
+                <div class="flex items-center gap-1.5 shrink-0">
+                  <span class="w-3 h-3 rounded-full bg-red-400/60"></span>
+                  <span class="w-3 h-3 rounded-full bg-yellow-400/60"></span>
+                  <span class="w-3 h-3 rounded-full bg-green-400/60"></span>
+                </div>
+                <div class="flex-1 flex items-center gap-2 bg-slate-700/50 rounded-md px-3 py-1 min-w-0">
+                  <svg class="w-3 h-3 text-slate-500 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-[11px] text-slate-400 font-mono truncate">figma.com/proto/pandai-user-flows</span>
+                </div>
+                <svg class="w-4 h-4 shrink-0 opacity-50" viewBox="0 0 38 57" aria-hidden="true">
+                  <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/>
+                  <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/>
+                  <path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/>
+                  <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/>
+                  <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/>
+                </svg>
+              </div>
+              <div class="relative bg-slate-800 overflow-hidden" style="aspect-ratio:4/3;">
+                <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center px-6">
+                  <div class="w-11 h-11 rounded-xl border border-slate-600 bg-slate-700/50 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M1 5.25A2.25 2.25 0 0 1 3.25 3h13.5A2.25 2.25 0 0 1 19 5.25v9.5A2.25 2.25 0 0 1 16.75 17H3.25A2.25 2.25 0 0 1 1 14.75v-9.5Zm1.5 5.81v3.69c0 .414.336.75.75.75h13.5a.75.75 0 0 0 .75-.75v-2.69l-2.22-2.219a.75.75 0 0 0-1.06 0l-1.91 1.909.47.47a.75.75 0 1 1-1.06 1.06L6.53 8.091a.75.75 0 0 0-1.06 0l-2.97 2.97ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd"/>
+                    </svg>
+                  </div>
+                  <p class="text-slate-500 text-xs font-medium">Add Figma screenshot</p>
+                  <p class="text-slate-600 text-[10px]">Change src="#" to your image path</p>
+                </div>
+                <img
+                  src="#"
+                  alt="Pandai - User Flows & Wireframes screenshot"
+                  class="absolute inset-0 w-full h-full object-cover z-10"
+                  onerror="this.style.display='none'"
+                />
+              </div>
+            </div>
+            <div class="mt-5 px-1">
+              <div class="flex items-center justify-between gap-3 mb-2">
+                <h3 class="text-white font-bold text-base leading-snug">Pandai — User Flows</h3>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2.5 py-1 rounded-full shrink-0">Wireframes</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Wireframes and annotated user flow diagrams for the quiz-taking,
+                progress tracking of teachers at Pandai.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="figma-tag">Figma</span>
+                <span class="figma-tag">Wireframes</span>
+                <span class="figma-tag">User Flows</span>
+                <span class="figma-tag">EdTech</span>
+              </div>
+              <a
+                href="https://www.figma.com/design/TVrvylo8OHzaJ73PKlNuqc/Pandai-Teacher---Class-Insight--Copy-?node-id=4004-785&t=MdLOOeMwWayfSyYf-1••"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-violet-300 hover:text-white bg-violet-400/5 hover:bg-violet-400/15 border border-violet-400/20 hover:border-violet-400/50 px-4 py-2 rounded-full transition-all duration-200"
+              >
+                <svg class="w-3 h-3" viewBox="0 0 38 57" aria-hidden="true"><path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/><path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/><path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/></svg>
+                Open in Figma
+                <svg class="w-3 h-3 opacity-60" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.194a.75.75 0 0 0-.053 1.06Z" clip-rule="evenodd"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="flex flex-col reveal-section" style="opacity:0;transform:translateY(24px);transition-delay:0.25s;">
+            <div class="group flex justify-center">
+              <div class="relative w-[220px] shrink-0">
+                <div class="bg-slate-800 rounded-[2.75rem] p-[5px] shadow-2xl border border-slate-700/60 group-hover:border-violet-500/40 transition-colors duration-300">
+                  <div class="absolute -right-[3px] top-20 w-[3px] h-10 bg-slate-700 rounded-r-sm" aria-hidden="true"></div>
+                  <div class="absolute -left-[3px] top-16 w-[3px] h-7 bg-slate-700 rounded-l-sm" aria-hidden="true"></div>
+                  <div class="absolute -left-[3px] top-28 w-[3px] h-7 bg-slate-700 rounded-l-sm" aria-hidden="true"></div>
+                  <div class="bg-slate-900 rounded-[2.35rem] overflow-hidden relative">
+                    <div class="bg-slate-900 px-5 pt-3 pb-1 flex items-center justify-between">
+                      <span class="text-[9px] text-slate-500 font-semibold">9:41</span>
+                      <div class="w-14 h-4 bg-slate-950 rounded-full" aria-hidden="true"></div>
+                      <div class="flex items-center gap-1">
+                        <svg class="w-3 h-2 text-slate-500" viewBox="0 0 15 11" fill="currentColor" aria-hidden="true"><rect x="0" y="3" width="3" height="8" rx=".5"/><rect x="4" y="2" width="3" height="9" rx=".5"/><rect x="8" y="0" width="3" height="11" rx=".5"/><rect x="12" y="0" width="3" height="11" rx=".5" opacity=".3"/></svg>
+                        <svg class="w-2.5 h-2.5 text-slate-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Z" clip-rule="evenodd"/></svg>
+                      </div>
+                    </div>
+                    <div class="relative bg-slate-900 overflow-hidden" style="aspect-ratio:9/17;">
+                      <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center px-4">
+                        <div class="w-9 h-9 rounded-xl border border-slate-700 bg-slate-800 flex items-center justify-center">
+                          <svg class="w-4 h-4 text-slate-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M1 5.25A2.25 2.25 0 0 1 3.25 3h13.5A2.25 2.25 0 0 1 19 5.25v9.5A2.25 2.25 0 0 1 16.75 17H3.25A2.25 2.25 0 0 1 1 14.75v-9.5Zm1.5 5.81v3.69c0 .414.336.75.75.75h13.5a.75.75 0 0 0 .75-.75v-2.69l-2.22-2.219a.75.75 0 0 0-1.06 0l-1.91 1.909.47.47a.75.75 0 1 1-1.06 1.06L6.53 8.091a.75.75 0 0 0-1.06 0l-2.97 2.97ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd"/>
+                          </svg>
+                        </div>
+                        <p class="text-slate-600 text-[10px] font-medium leading-snug">Add mobile<br>screenshot</p>
+                      </div>
+                      <img
+                        src="#"
+                        alt="Pandai — High-Fidelity Mobile UI screenshot"
+                        class="absolute inset-0 w-full h-full object-cover z-10"
+                        onerror="this.style.display='none'"
+                      />
+                    </div>
+                    <div class="bg-slate-900 flex justify-center py-2" aria-hidden="true">
+                      <div class="w-24 h-1 bg-slate-600 rounded-full"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 px-1">
+              <div class="flex items-center justify-between gap-3 mb-2">
+                <h3 class="text-white font-bold text-base leading-snug">Pandai — Mobile UI</h3>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-sky-400 bg-sky-400/10 border border-sky-400/20 px-2.5 py-1 rounded-full shrink-0">Hi-Fi</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                High-fidelity mobile UI mockups for the Pandai app — covering
+                onboarding screens, quiz interface, and progress tracking views.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="figma-tag">Figma</span>
+                <span class="figma-tag">Mobile UI</span>
+                <span class="figma-tag">iOS</span>
+                <span class="figma-tag">Android</span>
+              </div>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-violet-300 hover:text-white bg-violet-400/5 hover:bg-violet-400/15 border border-violet-400/20 hover:border-violet-400/50 px-4 py-2 rounded-full transition-all duration-200"
+              >
+                <svg class="w-3 h-3" viewBox="0 0 38 57" aria-hidden="true"><path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0Z" fill="#1ABCFE"/><path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0Z" fill="#0ACF83"/><path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19Z" fill="#FF7262"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5Z" fill="#F24E1E"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z" fill="#A259FF"/></svg>
+                Open in Figma
+                <svg class="w-3 h-3 opacity-60" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.194a.75.75 0 0 0-.053 1.06Z" clip-rule="evenodd"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div></div>
     </section>
 
   </main>
 
 
-  <!-- ── Footer ── -->
   <footer
     id="contact"
     class="bg-gray-950 text-gray-300"
     aria-labelledby="footer-heading"
   >
-    <!-- Top section -->
     <div class="max-w-6xl mx-auto px-6 lg:px-8 pt-20 pb-12">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
 
-        <!-- Brand column -->
         <div class="sm:col-span-2 lg:col-span-1">
           <a
             href="#home"
-            class="text-2xl font-black tracking-tight text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            class="text-2xl font-black tracking-tight text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700 rounded"
             aria-label="Back to top"
-          >Aida<span class="text-primary">.</span></a>
+          >Aida<span class="text-purple-700">.</span></a>
           <p class="mt-4 text-sm text-gray-400 leading-relaxed max-w-xs">
             UI/UX Designer &amp; Computer Science student, passionate about
             building experiences that are both beautiful and accessible.
           </p>
-          <!-- LinkedIn -->
           <a
             href="https://linkedin.com/in/aidasofiah/"
             target="_blank"
@@ -831,7 +1014,6 @@
           </a>
         </div>
 
-        <!-- Navigation column -->
         <div>
           <h2 id="footer-heading" class="text-xs font-bold tracking-widest uppercase text-gray-500 mb-5">Navigate</h2>
           <ul class="space-y-3 text-sm" role="list">
@@ -843,7 +1025,6 @@
           </ul>
         </div>
 
-        <!-- Contact column -->
         <div>
           <h2 class="text-xs font-bold tracking-widest uppercase text-gray-500 mb-5">Contact</h2>
           <ul class="space-y-3 text-sm" role="list">
@@ -858,7 +1039,7 @@
                 </svg>
                 aidaasofiah@gmail.com
               </a>
-            </li>
+            </div>
             <li>
               <a
                 
@@ -886,7 +1067,6 @@
           </ul>
         </div>
 
-        <!-- Location / availability column -->
         <div>
           <h2 class="text-xs font-bold tracking-widest uppercase text-gray-500 mb-5">Availability</h2>
           <div class="flex items-center gap-2 mb-4">
@@ -897,32 +1077,20 @@
             Based in Kuala Lumpur, Malaysia.<br />
             Graduating <span class="text-gray-300 font-medium">July 2026</span>.
           </p>
-          <!--<p class="mt-4 text-sm text-gray-400">
-            Available for full-time UI/UX roles and freelance projects.
-          </p>-->
-        </div>
+          </div>
 
       </div>
     </div>
 
-    <!-- Bottom bar -->
     <div class="border-t border-gray-800">
       <div class="max-w-6xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
         <p>© 2026 Aida Sofiah. All rights reserved.</p>
-        <!--<p class="flex items-center gap-1.5">
-          Designed &amp; built with
-          <svg class="w-3.5 h-3.5 text-red-400 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path d="m9.653 16.915-.005-.003-.019-.01a20.759 20.759 0 0 1-1.162-.682 22.045 22.045 0 0 1-2.582-2.184C4.045 12.733 2 10.352 2 7.5a4.5 4.5 0 0 1 8-2.828A4.5 4.5 0 0 1 18 7.5c0 2.852-2.044 5.233-3.885 6.536a22.049 22.049 0 0 1-3.744 2.865l-.019.01-.005.003h-.002a.739.739 0 0 1-.69.001l-.002-.001Z"/>
-          </svg>
-          in Kuala Lumpur
-        </p>-->
-      </div>
+        </div>
     </div>
 
   </footer>
 
 
-  <!-- Runtime JS -->
   <script>
     /* ==========================================================================
        Runtime behaviour for Aida Sofiah's portfolio.
