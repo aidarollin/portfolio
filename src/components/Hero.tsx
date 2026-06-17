@@ -143,7 +143,6 @@ export default function Hero() {
         style={{ zIndex: 50, animationDelay: '0.7s' }}
       >
         <p className="text-sm text-white/80 leading-relaxed">
-          I bring a unique blend of core design theory and technical development skills —
           bridging the gap between design and development.
         </p>
         <div className="mt-4 flex flex-wrap gap-1.5">
@@ -164,9 +163,10 @@ export default function Hero() {
         style={{ zIndex: 50, animationDelay: '0.85s' }}
       >
         <p className="text-xs sm:text-sm text-white/80 leading-relaxed">
-          Our interactive portfolio lets you explore the design thinking and technical craft
-          behind every project, from wireframes to working code.
+          
+
         </p>
+        
         <div className="flex flex-wrap gap-3">
           <a
             href="#work"
