@@ -48,10 +48,75 @@ export default function Experience() {
           <p className="mt-3 text-white/45 text-lg font-light">Where design meets real-world impact.</p>
         </div>
 
-        {/* Pandai */}
+        {/* Pandai — current role */}
         <article
           className="reveal bg-[#1a1a1a] rounded-2xl border border-[#272727] p-8 sm:p-10 mb-6 hover:border-[#e8702a]/20 hover:shadow-xl hover:shadow-black/40 transition-all duration-300"
           style={{ transitionDelay: '0.08s' }}
+          aria-label="Pandai Education, UI/UX and front-end"
+        >
+          <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
+            <div>
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <span className="text-[11px] font-bold tracking-wide uppercase bg-accent/10 text-accent border border-accent/20 px-3 py-1 rounded-full">EdTech</span>
+                <span className="text-[11px] font-bold tracking-wide uppercase bg-violet-500/10 text-violet-300 border border-violet-500/20 px-3 py-1 rounded-full">Design → Code</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight">UI/UX &amp; Front-End Developer</h3>
+              <p className="mt-1 text-lg font-semibold text-accent">Pandai Education Sdn. Bhd.</p>
+            </div>
+            <div className="shrink-0 text-right">
+              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white/80 text-sm font-semibold px-4 py-2.5 rounded-full">
+                {CAL_ICON}
+                Jul 2026 — Present
+              </div>
+              <p className="mt-1.5 text-xs text-white/40 font-medium">Kuala Lumpur</p>
+            </div>
+          </div>
+
+          <div className="border-t border-white/8 mb-7" />
+
+          <ul className="space-y-4 mb-8" role="list">
+            <Bullet>Rebuilding Pandai's new <strong className="text-white font-semibold">student UI</strong> on the TALL stack (Laravel 12, Livewire 4, Alpine.js, <strong className="text-white font-semibold">Tailwind CSS v4</strong>) straight from Pandai Design System 1.5, for porting into the production app.</Bullet>
+            <Bullet>Reading design-system frames, components and variables into code through <strong className="text-white font-semibold">Figma's MCP server</strong>, so each screen is built from the real design nodes and tokens instead of screenshots.</Bullet>
+            <Bullet>Built the <strong className="text-white font-semibold">AskPBot</strong> panel and web view and the Math Drill scene: a Rive-animated PBot, voice and image input, and themed chat scenes. Then turned AskPBot into a working <strong className="text-white font-semibold">Claude-powered app</strong> (Next.js 16, React 19, TypeScript).</Bullet>
+            <Bullet>Shipped <strong className="text-white font-semibold">Battle Royale</strong> (lobby, royale quiz, results podium, synthesised audio), <strong className="text-white font-semibold">Rewards</strong> (vouchers, Coin Quest) and Rive-animated <strong className="text-white font-semibold">onboarding</strong> flows.</Bullet>
+          </ul>
+
+          <div className="flex flex-wrap items-center gap-6 p-5 bg-accent/5 rounded-xl border border-accent/10 mb-8">
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-3xl font-black text-accent">88</span>
+              <span className="text-sm text-white/45 font-medium">commits</span>
+            </div>
+            <div className="w-px h-8 bg-white/10 hidden sm:block" aria-hidden="true" />
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-3xl font-black text-accent">4</span>
+              <span className="text-sm text-white/45 font-medium">product areas built</span>
+            </div>
+            <div className="w-px h-8 bg-white/10 hidden sm:block" aria-hidden="true" />
+            <div className="flex items-center gap-2 sm:ml-auto">
+              {FIGMA_ICON}
+              <span className="text-xs text-white/45 font-medium">Figma → code via MCP</span>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-2 mb-8">
+            <span className="text-xs text-white/40 self-center font-medium mr-1">Toolkit</span>
+            <span className="skill-pill">Figma MCP</span>
+            <span className="skill-pill">Design Tokens</span>
+            <span className="skill-pill">Tailwind CSS v4</span>
+            <span className="skill-pill">Livewire + Alpine.js</span>
+            <span className="skill-pill">Next.js</span>
+            <span className="skill-pill">Rive</span>
+          </div>
+
+          <a href="#case-study" className="inline-flex items-center gap-2.5 bg-accent hover:bg-[#d2611f] text-white text-sm font-semibold px-6 py-3 rounded-full shadow-md shadow-accent/20 hover:shadow-accent/30 hover:-translate-y-0.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1a1a]">
+            Try AskPBot &amp; Read the Case Study
+          </a>
+        </article>
+
+        {/* Pandai — internship */}
+        <article
+          className="reveal bg-[#1a1a1a] rounded-2xl border border-[#272727] p-8 sm:p-10 mb-6 hover:border-[#e8702a]/20 hover:shadow-xl hover:shadow-black/40 transition-all duration-300"
+          style={{ transitionDelay: '0.14s' }}
           aria-label="Pandai Education internship"
         >
           <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
@@ -78,7 +143,7 @@ export default function Experience() {
             <Bullet>Assisted in designing mobile and web interfaces using Figma for an EdTech platform serving over <strong className="text-white font-semibold">1 million students</strong>.</Bullet>
             <Bullet>Revamped key user flows including <strong className="text-white font-semibold">quiz-taking</strong>, <strong className="text-white font-semibold">progress tracking</strong>, and <strong className="text-white font-semibold">onboarding experiences</strong>.</Bullet>
             <Bullet>Created wireframes, prototypes, and <strong className="text-white font-semibold">high-fidelity UI mockups</strong> across multiple product surfaces.</Bullet>
-            <Bullet>Contributed to maintaining and expanding Pandai's <strong className="text-white font-semibold">design system</strong> — colour tokens, typography, and reusable components.</Bullet>
+            <Bullet>Contributed to maintaining and expanding Pandai's <strong className="text-white font-semibold">design system</strong>: colour tokens, typography, and reusable components.</Bullet>
             <Bullet>Supported UX research through <strong className="text-white font-semibold">user interviews</strong> and <strong className="text-white font-semibold">competitor analysis</strong> to inform design decisions.</Bullet>
           </ul>
 
@@ -114,7 +179,7 @@ export default function Experience() {
         {/* Klynn */}
         <article
           className="reveal bg-[#1a1a1a] rounded-2xl border border-[#272727] p-8 sm:p-10 hover:border-[#e8702a]/20 hover:shadow-xl hover:shadow-black/40 transition-all duration-300"
-          style={{ transitionDelay: '0.18s' }}
+          style={{ transitionDelay: '0.2s' }}
           aria-label="Klynn Global freelance"
         >
           <div className="flex flex-wrap items-start justify-between gap-4 mb-6">

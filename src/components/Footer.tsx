@@ -1,6 +1,8 @@
 const NAV_LINKS = [
   { label: 'Home',       href: '#home'       },
   { label: 'Experience', href: '#experience' },
+  { label: 'Case Study', href: '#case-study' },
+  { label: 'Reskin',     href: '#reskin'     },
   { label: 'Projects',   href: '#work'       },
   { label: 'Design',     href: '#design'     },
 ]
@@ -43,8 +45,8 @@ export default function Footer() {
               <span className="text-white text-xl font-playfair italic">Aida</span>
             </a>
             <p className="text-sm text-white/40 leading-relaxed max-w-xs">
-              UI/UX Designer &amp; Computer Science student, passionate about
-              building experiences that are both beautiful and accessible.
+              UI/UX designer and front-end developer. I design systems in Figma
+              and ship them in React, accessible by default.
             </p>
             <a
               href="https://linkedin.com/in/aidasofiah/"
@@ -102,7 +104,7 @@ export default function Footer() {
             </div>
             <p className="text-sm text-white/40 leading-relaxed">
               Based in Kuala Lumpur, Malaysia.<br />
-              Graduating <span className="text-white/70 font-medium">July 2026</span>.
+              Computer Science, <span className="text-white/70 font-medium">Class of 2026</span>.
             </p>
           </div>
 

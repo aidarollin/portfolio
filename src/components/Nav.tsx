@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { motion } from 'motion/react'
 
 const NAV_LINKS = [
   { label: 'Experience', href: '#experience', section: 'experience' },
+  { label: 'Case Study', href: '#case-study', section: 'case-study' },
+  { label: 'Reskin',     href: '#reskin',     section: 'reskin'     },
   { label: 'Projects',   href: '#work',       section: 'work'       },
   { label: 'Design',     href: '#design',     section: 'design'     },
   { label: 'Contact',    href: '#contact',    section: 'contact'    },
@@ -26,7 +29,7 @@ export default function Nav() {
       },
       { rootMargin: '-40% 0px -55% 0px' },
     )
-    document.querySelectorAll('section[id]').forEach((s) => observer.observe(s))
+    document.querySelectorAll('section[id], footer[id]').forEach((s) => observer.observe(s))
     return () => observer.disconnect()
   }, [])
 
@@ -50,31 +53,32 @@ export default function Nav() {
           <span className="text-white text-2xl font-playfair italic">Aida</span>
         </a>
 
-        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-2 py-2 items-center gap-1">
+        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-2 py-2 items-center gap-1">
           {NAV_LINKS.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                active === item.section
-                  ? 'bg-white text-gray-900'
-                  : 'text-white/80 hover:bg-white/20 hover:text-white'
+              aria-current={active === item.section ? 'true' : undefined}
+              className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-300 ${
+                active === item.section ? 'text-gray-900' : 'text-white/80 hover:text-white'
               }`}
             >
-              {item.label}
+              {active === item.section && (
+                <motion.span
+                  layoutId="nav-pill"
+                  className="absolute inset-0 rounded-full bg-white"
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  aria-hidden="true"
+                />
+              )}
+              <span className="relative">{item.label}</span>
             </a>
           ))}
         </div>
 
         <div className="flex items-center gap-3">
-          <a
-            href="mailto:aidaasofiah@gmail.com"
-            className="hidden md:block bg-white text-gray-900 text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-gray-100 transition-colors"
-          >
-            Get In Touch
-          </a>
           <button
-            className="md:hidden text-white p-1 focus-visible:outline-none"
+            className="lg:hidden text-white p-1 focus-visible:outline-none"
             onClick={() => setOpen(!open)}
             aria-label="Toggle navigation menu"
             aria-expanded={open}
