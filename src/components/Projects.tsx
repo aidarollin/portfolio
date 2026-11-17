@@ -50,6 +50,15 @@ const PROJECTS: Project[] = [
     href: null,
     gradient: 'from-accent via-orange-500 to-amber-500',
   },
+  {
+    num: '05',
+    title: 'Cave Party',
+    desc: 'A shared song queue for parties. One device plays YouTube, and everyone else adds, reorders and skips songs from their own phone in real time. Try the live player below.',
+    tags: ['JavaScript', 'Firebase', 'YouTube API', 'PWA'],
+    href: '#caveparty',
+    linkLabel: 'Try the Player',
+    gradient: 'from-amber-500 via-accent to-orange-500',
+  },
 ]
 
 // Cursor-follow glow: write pointer position to CSS vars, let a radial-gradient read them
@@ -107,8 +116,7 @@ export default function Projects() {
                   {p.href ? (
                     <a
                       href={p.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      {...(p.href.startsWith('#') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
                       className="inline-flex items-center justify-center gap-2 w-full bg-accent hover:bg-[#d2611f] text-white text-sm font-semibold py-2.5 px-5 rounded-full shadow-sm shadow-accent/20 hover:shadow-accent/30 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1a1a]"
                     >
                       {p.linkLabel ?? 'View Live Project'}

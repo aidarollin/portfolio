@@ -6,6 +6,7 @@ import Experience from './components/Experience'
 import CaseStudy from './components/CaseStudy'
 import Reskin from './components/Reskin'
 import Projects from './components/Projects'
+import CaveParty from './components/CaveParty'
 import Design from './components/Design'
 import Footer from './components/Footer'
 
@@ -35,6 +36,7 @@ export default function App() {
         <CaseStudy />
         <Reskin />
         <Projects />
+        <CaveParty />
         <Design />
         <Footer />
       </div>
